@@ -2,15 +2,19 @@ package RNcornerStoneBackend.RNcornerStoneBackend.controller;
 
 
 import RNcornerStoneBackend.RNcornerStoneBackend.bo.CreateUserRequest;
+import RNcornerStoneBackend.RNcornerStoneBackend.entity.UserEntity;
 import RNcornerStoneBackend.RNcornerStoneBackend.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/user")
 public class authController {
 
     private final UserService userService;
@@ -39,5 +43,22 @@ public class authController {
     @GetMapping("/yourname")
     public String testController(@RequestBody String name) {
         return "My name is " + name;
+    }
+
+
+    @GetMapping("/me")
+    public ResponseEntity<UserEntity> authenticatedUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        UserEntity currentUser = (UserEntity) authentication.getPrincipal();
+
+        return ResponseEntity.ok(currentUser);
+    }
+
+    @GetMapping("/")
+    public ResponseEntity<List<UserEntity>> allUsers() {
+        List <UserEntity> users = userService.allUsers();
+
+        return ResponseEntity.ok(users);
     }
 }
