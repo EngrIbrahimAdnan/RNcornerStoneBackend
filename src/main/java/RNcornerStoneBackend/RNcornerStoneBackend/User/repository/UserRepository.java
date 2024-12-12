@@ -1,6 +1,6 @@
-package RNcornerStoneBackend.RNcornerStoneBackend.repository;
+package RNcornerStoneBackend.RNcornerStoneBackend.User.repository;
 
-import RNcornerStoneBackend.RNcornerStoneBackend.entity.UserEntity;
+import RNcornerStoneBackend.RNcornerStoneBackend.User.entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
