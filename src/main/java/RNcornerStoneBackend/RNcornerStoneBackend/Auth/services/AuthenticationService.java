@@ -1,9 +1,9 @@
 package RNcornerStoneBackend.RNcornerStoneBackend.Auth.services;
 
-import RNcornerStoneBackend.RNcornerStoneBackend.bo.CreateUserRequest;
-import RNcornerStoneBackend.RNcornerStoneBackend.bo.LoginUserRequest;
-import RNcornerStoneBackend.RNcornerStoneBackend.entity.UserEntity;
-import RNcornerStoneBackend.RNcornerStoneBackend.repository.UserRepository;
+import RNcornerStoneBackend.RNcornerStoneBackend.User.bo.CreateUserRequest;
+import RNcornerStoneBackend.RNcornerStoneBackend.User.bo.LoginUserRequest;
+import RNcornerStoneBackend.RNcornerStoneBackend.User.entity.UserEntity;
+import RNcornerStoneBackend.RNcornerStoneBackend.User.repository.UserRepository;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;

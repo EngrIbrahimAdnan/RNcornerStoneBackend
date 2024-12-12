@@ -1,9 +1,9 @@
-package RNcornerStoneBackend.RNcornerStoneBackend.controller;
+package RNcornerStoneBackend.RNcornerStoneBackend.User.controller;
 
 
-import RNcornerStoneBackend.RNcornerStoneBackend.bo.CreateUserRequest;
-import RNcornerStoneBackend.RNcornerStoneBackend.entity.UserEntity;
-import RNcornerStoneBackend.RNcornerStoneBackend.service.UserService;
+import RNcornerStoneBackend.RNcornerStoneBackend.User.bo.CreateUserRequest;
+import RNcornerStoneBackend.RNcornerStoneBackend.User.entity.UserEntity;
+import RNcornerStoneBackend.RNcornerStoneBackend.User.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;

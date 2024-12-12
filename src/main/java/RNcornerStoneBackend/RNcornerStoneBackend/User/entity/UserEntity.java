@@ -1,4 +1,4 @@
-package RNcornerStoneBackend.RNcornerStoneBackend.entity;
+package RNcornerStoneBackend.RNcornerStoneBackend.User.entity;
 
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;

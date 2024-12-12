@@ -2,10 +2,10 @@ package RNcornerStoneBackend.RNcornerStoneBackend.Auth.controllers;
 
 import RNcornerStoneBackend.RNcornerStoneBackend.Auth.services.AuthenticationService;
 import RNcornerStoneBackend.RNcornerStoneBackend.Auth.services.JwtService;
-import RNcornerStoneBackend.RNcornerStoneBackend.bo.CreateUserRequest;
-import RNcornerStoneBackend.RNcornerStoneBackend.bo.LoginResponse;
-import RNcornerStoneBackend.RNcornerStoneBackend.bo.LoginUserRequest;
-import RNcornerStoneBackend.RNcornerStoneBackend.entity.UserEntity;
+import RNcornerStoneBackend.RNcornerStoneBackend.User.bo.CreateUserRequest;
+import RNcornerStoneBackend.RNcornerStoneBackend.User.bo.LoginResponse;
+import RNcornerStoneBackend.RNcornerStoneBackend.User.bo.LoginUserRequest;
+import RNcornerStoneBackend.RNcornerStoneBackend.User.entity.UserEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
