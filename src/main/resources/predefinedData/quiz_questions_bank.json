@@ -1,0 +1,503 @@
+[
+  {
+    "questionText": "What is money used for?",
+    "option_a": "To buy toys",
+    "option_b": "To play games",
+    "option_c": "To travel",
+    "option_d": "All of the above",
+    "correctOption": "d",
+    "level": "Beginner",
+    "rewardAmount": 0.3
+  },
+  {
+    "questionText": "What is a piggy bank used for?",
+    "option_a": "To store candy",
+    "option_b": "To save money",
+    "option_c": "To play with",
+    "option_d": "To hide toys",
+    "correctOption": "b",
+    "level": "Beginner",
+    "rewardAmount": 0.2
+  },
+  {
+    "questionText": "What is saving money?",
+    "option_a": "Spending money immediately",
+    "option_b": "Putting money aside for later use",
+    "option_c": "Lending money to others",
+    "option_d": "Giving money to charity",
+    "correctOption": "b",
+    "level": "Beginner",
+    "rewardAmount": 0.3
+  },
+  {
+    "questionText": "What is a budget?",
+    "option_a": "A list of things you want to buy",
+    "option_b": "A plan for how to spend your money",
+    "option_c": "A way to save money",
+    "option_d": "A type of bank account",
+    "correctOption": "b",
+    "level": "Beginner",
+    "rewardAmount": 0.4
+  },
+  {
+    "questionText": "Which of the following is a way to earn money?",
+    "option_a": "Finding money on the ground",
+    "option_b": "Doing chores",
+    "option_c": "Taking money from others",
+    "option_d": "Spending money",
+    "correctOption": "b",
+    "level": "Beginner",
+    "rewardAmount": 0.3
+  },
+  {
+    "questionText": "What is a dollar?",
+    "option_a": "A type of toy",
+    "option_b": "A unit of money",
+    "option_c": "A coin used for playing",
+    "option_d": "A type of food",
+    "correctOption": "b",
+    "level": "Beginner",
+    "rewardAmount": 0.25
+  },
+  {
+    "questionText": "What should you do before buying something?",
+    "option_a": "Ask for a discount",
+    "option_b": "Make sure you have enough money",
+    "option_c": "Just buy it",
+    "option_d": "Tell your friends to buy it first",
+    "correctOption": "b",
+    "level": "Beginner",
+    "rewardAmount": 0.3
+  },
+  {
+    "questionText": "What does 'spending' mean?",
+    "option_a": "Saving money",
+    "option_b": "Earning money",
+    "option_c": "Using money to buy things",
+    "option_d": "Lending money to someone",
+    "correctOption": "c",
+    "level": "Beginner",
+    "rewardAmount": 0.2
+  },
+  {
+    "questionText": "Why is it important to save money?",
+    "option_a": "To buy everything right away",
+    "option_b": "To have money when you need it later",
+    "option_c": "To give money away",
+    "option_d": "To hide money from others",
+    "correctOption": "b",
+    "level": "Beginner",
+    "rewardAmount": 0.4
+  },
+  {
+    "questionText": "What is a cost?",
+    "option_a": "A free item",
+    "option_b": "The amount of money you have",
+    "option_c": "The money you pay for something",
+    "option_d": "A place to store money",
+    "correctOption": "c",
+    "level": "Beginner",
+    "rewardAmount": 0.3
+  },
+  {
+    "questionText": "What is the difference between 'wants' and 'needs'?",
+    "option_a": "Wants are things we need to survive, needs are things we can live without",
+    "option_b": "Wants are things we can buy, needs are free",
+    "option_c": "Wants are things we desire, needs are things we need to survive",
+    "option_d": "Wants and needs are the same",
+    "correctOption": "c",
+    "level": "Intermediate",
+    "rewardAmount": 0.5
+  },
+  {
+    "questionText": "Why is it important to compare prices before buying something?",
+    "option_a": "To always choose the cheapest option",
+    "option_b": "To make sure you're getting the best deal",
+    "option_c": "To buy as much as you can",
+    "option_d": "To spend more money",
+    "correctOption": "b",
+    "level": "Intermediate",
+    "rewardAmount": 0.6
+  },
+  {
+    "questionText": "What is the purpose of a bank account?",
+    "option_a": "To keep your money safe and make it easier to spend",
+    "option_b": "To give money to other people",
+    "option_c": "To store your toys",
+    "option_d": "To hide your money from your parents",
+    "correctOption": "a",
+    "level": "Intermediate",
+    "rewardAmount": 0.7
+  },
+  {
+    "questionText": "What is the meaning of 'interest' on a savings account?",
+    "option_a": "The fee you have to pay to open a bank account",
+    "option_b": "Money the bank pays you for keeping your money with them",
+    "option_c": "A reward for spending money",
+    "option_d": "Money you must give back to the bank when you withdraw",
+    "correctOption": "b",
+    "level": "Intermediate",
+    "rewardAmount": 0.8
+  },
+  {
+    "questionText": "Which of the following is a reason to save money?",
+    "option_a": "To spend it on things you want immediately",
+    "option_b": "To have money for emergencies or future needs",
+    "option_c": "To show off to your friends",
+    "option_d": "To buy things you don't really need",
+    "correctOption": "b",
+    "level": "Intermediate",
+    "rewardAmount": 0.6
+  },
+  {
+    "questionText": "What is a 'credit card'?",
+    "option_a": "A type of money",
+    "option_b": "A card you use to borrow money from a bank to buy things",
+    "option_c": "A card you use to store your money",
+    "option_d": "A card you can only use for shopping online",
+    "correctOption": "b",
+    "level": "Intermediate",
+    "rewardAmount": 0.7
+  },
+  {
+    "questionText": "What is the difference between a 'want' and a 'goal'?",
+    "option_a": "Wants are the same as goals",
+    "option_b": "A goal is something you work toward, while a want is something you desire",
+    "option_c": "A goal is something you buy, while a want is something you work for",
+    "option_d": "A goal is never achieved, while a want can be satisfied instantly",
+    "correctOption": "b",
+    "level": "Intermediate",
+    "rewardAmount": 0.6
+  },
+  {
+    "questionText": "What is the term for money you pay every month for using a credit card?",
+    "option_a": "Fee",
+    "option_b": "Charge",
+    "option_c": "Interest",
+    "option_d": "Discount",
+    "correctOption": "c",
+    "level": "Intermediate",
+    "rewardAmount": 0.8
+  },
+  {
+    "questionText": "What is the 'stock market'?",
+    "option_a": "A place where you can buy groceries",
+    "option_b": "A place where people buy and sell parts of companies",
+    "option_c": "A place where you can save your money",
+    "option_d": "A place to earn free money",
+    "correctOption": "b",
+    "level": "Intermediate",
+    "rewardAmount": 0.9
+  },
+  {
+    "questionText": "Why should you avoid spending all of your money immediately?",
+    "option_a": "Because you'll have nothing left for later",
+    "option_b": "Because you don't have enough money to spend",
+    "option_c": "Because spending money is always bad",
+    "option_d": "Because it's better to save money for important things",
+    "correctOption": "a",
+    "level": "Intermediate",
+    "rewardAmount": 0.7
+  },
+  {
+    "questionText": "What is a budget and why is it important?",
+    "option_a": "A budget is a way to plan how to spend and save money, helping you avoid spending too much",
+    "option_b": "A budget is a way to spend as much money as possible",
+    "option_c": "A budget is a list of things you want to buy",
+    "option_d": "A budget is a method of borrowing money from others",
+    "correctOption": "a",
+    "level": "Advanced",
+    "rewardAmount": 1.0
+  },
+  {
+    "questionText": "What is the meaning of 'investing'?",
+    "option_a": "Using your money to buy things you don't need",
+    "option_b": "Putting your money into a bank account",
+    "option_c": "Spending your money on things that will help you earn more money later",
+    "option_d": "Giving money away to friends and family",
+    "correctOption": "c",
+    "level": "Advanced",
+    "rewardAmount": 1.2
+  },
+  {
+    "questionText": "What is the difference between a 'savings account' and an 'investment account'?",
+    "option_a": "A savings account earns interest, while an investment account lets you grow your money through stocks, bonds, or mutual funds",
+    "option_b": "A savings account is for spending money, while an investment account is for saving",
+    "option_c": "Both accounts are the same",
+    "option_d": "An investment account is used to store your money safely, while a savings account is risky",
+    "correctOption": "a",
+    "level": "Advanced",
+    "rewardAmount": 1.5
+  },
+  {
+    "questionText": "What is a 'loan'?",
+    "option_a": "Money you borrow from a bank or person that you have to pay back with interest",
+    "option_b": "Money you give to a friend as a gift",
+    "option_c": "Money you receive for doing a job",
+    "option_d": "Money you keep as savings",
+    "correctOption": "a",
+    "level": "Advanced",
+    "rewardAmount": 1.3
+  },
+  {
+    "questionText": "What is the difference between a 'fixed' and 'variable' interest rate?",
+    "option_a": "A fixed interest rate stays the same, while a variable rate can change over time",
+    "option_b": "A fixed interest rate changes, while a variable rate stays the same",
+    "option_c": "There is no difference",
+    "option_d": "A fixed rate is for savings, while a variable rate is for loans",
+    "correctOption": "a",
+    "level": "Advanced",
+    "rewardAmount": 1.4
+  },
+  {
+    "questionText": "What is 'compound interest'?",
+    "option_a": "Interest you earn on both the money you saved and the interest that you earned",
+    "option_b": "Interest that you pay to a bank when you borrow money",
+    "option_c": "The amount of interest you pay on your loan",
+    "option_d": "Interest that is fixed and never changes",
+    "correctOption": "a",
+    "level": "Advanced",
+    "rewardAmount": 1.5
+  },
+  {
+    "questionText": "Why is it important to have an emergency fund?",
+    "option_a": "To have money ready in case something unexpected happens, like a car breaking down or a medical bill",
+    "option_b": "To spend on things you want right away",
+    "option_c": "To have money to buy expensive toys",
+    "option_d": "To lend money to your friends",
+    "correctOption": "a",
+    "level": "Advanced",
+    "rewardAmount": 1.2
+  },
+  {
+    "questionText": "What does 'diversification' mean in investing?",
+    "option_a": "Putting all your money into one investment",
+    "option_b": "Spreading your money across different types of investments to reduce risk",
+    "option_c": "Only investing in things you understand",
+    "option_d": "Choosing investments based on how much money you have",
+    "correctOption": "b",
+    "level": "Advanced",
+    "rewardAmount": 1.6
+  },
+  {
+    "questionText": "What is 'inflation'?",
+    "option_a": "A way to increase the price of everything",
+    "option_b": "The increase in prices of goods and services over time, which can decrease the value of money",
+    "option_c": "The amount of money in circulation",
+    "option_d": "A type of tax",
+    "correctOption": "b",
+    "level": "Advanced",
+    "rewardAmount": 1.4
+  },
+  {
+    "questionText": "What is the purpose of a 'credit score'?",
+    "option_a": "To measure how much money you have in your bank account",
+    "option_b": "To show how much money you owe to others",
+    "option_c": "To show your ability to borrow money and repay it on time",
+    "option_d": "To measure your wealth and savings",
+    "correctOption": "c",
+    "level": "Advanced",
+    "rewardAmount": 1.5
+  },
+  {
+    "questionText": "What is a 'stock market'?",
+    "option_a": "A place where people go to buy and sell things they need",
+    "option_b": "A market where people buy and sell shares of companies to try to make money",
+    "option_c": "A place where people exchange goods and services without using money",
+    "option_d": "A place where people trade in used clothes and toys",
+    "correctOption": "b",
+    "level": "Expert",
+    "rewardAmount": 2.0
+  },
+  {
+    "questionText": "What is the meaning of 'dividends'?",
+    "option_a": "Money you receive from selling stocks",
+    "option_b": "Money you pay to borrow money from a bank",
+    "option_c": "Money paid to shareholders by companies from their profits",
+    "option_d": "Money you spend on buying things from the store",
+    "correctOption": "c",
+    "level": "Expert",
+    "rewardAmount": 2.2
+  },
+  {
+    "questionText": "What is 'risk' in investing?",
+    "option_a": "The chance that an investment will lose money or not perform as expected",
+    "option_b": "The chance that you will make money from an investment",
+    "option_c": "The chance that you will borrow more money than you can repay",
+    "option_d": "The chance that the economy will grow",
+    "correctOption": "a",
+    "level": "Expert",
+    "rewardAmount": 2.5
+  },
+  {
+    "questionText": "What is a 'mutual fund'?",
+    "option_a": "A fund that allows people to save money for a vacation",
+    "option_b": "A pool of money from many investors used to invest in a variety of stocks, bonds, or other assets",
+    "option_c": "A way to store money without earning interest",
+    "option_d": "A fund that is only for rich people",
+    "correctOption": "b",
+    "level": "Expert",
+    "rewardAmount": 2.3
+  },
+  {
+    "questionText": "What does it mean to 'short sell' a stock?",
+    "option_a": "To buy a stock and sell it later for a higher price",
+    "option_b": "To borrow and sell a stock in the hope of buying it back at a lower price",
+    "option_c": "To buy stocks in a company that is about to go out of business",
+    "option_d": "To hold onto a stock for a long period of time",
+    "correctOption": "b",
+    "level": "Expert",
+    "rewardAmount": 2.6
+  },
+  {
+    "questionText": "What is a 'bond'?",
+    "option_a": "A type of loan where you lend money to a company or government in exchange for interest payments",
+    "option_b": "A type of savings account that guarantees a fixed interest rate",
+    "option_c": "A form of investment in real estate",
+    "option_d": "A stock in a high-risk company",
+    "correctOption": "a",
+    "level": "Expert",
+    "rewardAmount": 2.4
+  },
+  {
+    "questionText": "What is 'capital gains tax'?",
+    "option_a": "A tax you pay when you sell something for more money than you bought it for",
+    "option_b": "A tax you pay for saving money in a savings account",
+    "option_c": "A tax you pay on the income you earn from working",
+    "option_d": "A tax you pay when you receive money from your grandparents",
+    "correctOption": "a",
+    "level": "Expert",
+    "rewardAmount": 2.7
+  },
+  {
+    "questionText": "What is 'asset allocation'?",
+    "option_a": "The way you decide how to spend your money on things you want",
+    "option_b": "The way you divide your investments among different types of assets like stocks, bonds, and cash",
+    "option_c": "The way you invest money to get the highest return possible",
+    "option_d": "The way you choose where to save your money based on your age",
+    "correctOption": "b",
+    "level": "Expert",
+    "rewardAmount": 2.5
+  },
+  {
+    "questionText": "What is 'leverage' in finance?",
+    "option_a": "Using borrowed money to increase the potential return of an investment",
+    "option_b": "Using your savings to buy more toys",
+    "option_c": "Using your money to buy something that is more expensive than you can afford",
+    "option_d": "Using money from your bank account to buy stocks",
+    "correctOption": "a",
+    "level": "Expert",
+    "rewardAmount": 2.8
+  },
+  {
+    "questionText": "What is the 'time value of money'?",
+    "option_a": "The idea that money available today is worth more than the same amount in the future because it can earn interest or be invested",
+    "option_b": "The idea that money loses its value over time",
+    "option_c": "The idea that the value of money increases over time",
+    "option_d": "The idea that money is only valuable when you spend it immediately",
+    "correctOption": "a",
+    "level": "Expert",
+    "rewardAmount": 2.9
+  }
+  ,
+  {
+    "questionText": "What is a 'budget'?",
+    "option_a": "A plan to spend money without tracking expenses",
+    "option_b": "A list of things you want to buy",
+    "option_c": "A plan for managing your money by tracking income and expenses",
+    "option_d": "A savings account",
+    "correctOption": "c",
+    "level": "Master",
+    "rewardAmount": 2.5
+  },
+  {
+    "questionText": "What does 'savings' mean?",
+    "option_a": "Money you spend on things you want",
+    "option_b": "Money you keep to use in the future for emergencies or big purchases",
+    "option_c": "Money you borrow from a bank",
+    "option_d": "Money you give to a friend",
+    "correctOption": "b",
+    "level": "Master",
+    "rewardAmount": 2.6
+  },
+  {
+    "questionText": "What is a 'credit card'?",
+    "option_a": "A card that you can use to borrow money for purchases that you will pay back later",
+    "option_b": "A card that stores your savings",
+    "option_c": "A card that earns you rewards only when you spend money",
+    "option_d": "A card you use to store digital money",
+    "correctOption": "a",
+    "level": "Master",
+    "rewardAmount": 2.7
+  },
+  {
+    "questionText": "What is 'interest' when you save money in a bank?",
+    "option_a": "Money the bank gives you for keeping your money with them",
+    "option_b": "Money you have to pay when you borrow money from someone",
+    "option_c": "Money you get from a job",
+    "option_d": "Money you earn when you sell something",
+    "correctOption": "a",
+    "level": "Master",
+    "rewardAmount": 2.8
+  },
+  {
+    "questionText": "Why is it important to 'save money'?",
+    "option_a": "To spend it as soon as possible on things you like",
+    "option_b": "To keep it safe in case you need it for emergencies or big purchases in the future",
+    "option_c": "To show off to your friends",
+    "option_d": "To lend it to others without getting it back",
+    "correctOption": "b",
+    "level": "Master",
+    "rewardAmount": 2.9
+  },
+  {
+    "questionText": "What is the 'stock market'?",
+    "option_a": "A place where people can buy and sell shares of companies to make money",
+    "option_b": "A place where you can get a loan to buy a car",
+    "option_c": "A place where you can exchange money for goods",
+    "option_d": "A place where banks keep their money",
+    "correctOption": "a",
+    "level": "Master",
+    "rewardAmount": 3.0
+  },
+  {
+    "questionText": "What is 'insurance'?",
+    "option_a": "A way to protect yourself financially in case something bad happens, like an accident or illness",
+    "option_b": "A way to make money by betting on things",
+    "option_c": "A kind of savings account",
+    "option_d": "A loan from the bank",
+    "correctOption": "a",
+    "level": "Master",
+    "rewardAmount": 3.1
+  },
+  {
+    "questionText": "What does it mean to 'invest'?",
+    "option_a": "To spend all your money on things you want right now",
+    "option_b": "To save your money and expect it to grow over time, usually by buying stocks or bonds",
+    "option_c": "To borrow money from a bank",
+    "option_d": "To give money to a friend to buy something for you",
+    "correctOption": "b",
+    "level": "Master",
+    "rewardAmount": 3.2
+  },
+  {
+    "questionText": "What is a 'loan'?",
+    "option_a": "Money you borrow and must pay back later with interest",
+    "option_b": "Money you save to buy something",
+    "option_c": "Money you earn from a job",
+    "option_d": "Money you give to someone without expecting anything back",
+    "correctOption": "a",
+    "level": "Master",
+    "rewardAmount": 3.3
+  },
+  {
+    "questionText": "What does it mean to 'track your spending'?",
+    "option_a": "To write down everything you spend money on so you know where your money goes",
+    "option_b": "To only buy things you don't need",
+    "option_c": "To ignore your bank account balance",
+    "option_d": "To spend as much as possible without worrying about it",
+    "correctOption": "a",
+    "level": "Master",
+    "rewardAmount": 3.4
+  }
+]

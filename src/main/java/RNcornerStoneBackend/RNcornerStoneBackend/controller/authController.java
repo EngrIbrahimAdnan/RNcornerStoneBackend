@@ -2,6 +2,7 @@ package RNcornerStoneBackend.RNcornerStoneBackend.controller;
 
 
 import RNcornerStoneBackend.RNcornerStoneBackend.bo.CreateUserRequest;
+import RNcornerStoneBackend.RNcornerStoneBackend.Setup.entity.QuizQuestionEntity;
 import RNcornerStoneBackend.RNcornerStoneBackend.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,8 +37,10 @@ public class authController {
 
     }
 
-    @GetMapping("/yourname")
-    public String testController(@RequestBody String name) {
-        return "My name is " + name;
+    @PostMapping("/addQuizQuestion")
+    public QuizQuestionEntity testController(@RequestBody QuizQuestionEntity quizQuestion) {
+        return quizQuestion;
     }
+
+
 }
