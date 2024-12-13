@@ -8,7 +8,7 @@ import java.util.List;
 
 @Service
 public interface UserService {
-    Boolean CreateUserAccount(CreateUserRequest request);
+    boolean CreateUserAccount(CreateUserRequest request);
 
     List<UserEntity> allUsers();
 }
