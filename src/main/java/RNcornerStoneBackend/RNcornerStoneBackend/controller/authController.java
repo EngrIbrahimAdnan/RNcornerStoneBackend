@@ -2,7 +2,7 @@ package RNcornerStoneBackend.RNcornerStoneBackend.controller;
 
 
 import RNcornerStoneBackend.RNcornerStoneBackend.bo.CreateUserRequest;
-import RNcornerStoneBackend.RNcornerStoneBackend.Setup.entity.QuizQuestionEntity;
+import RNcornerStoneBackend.RNcornerStoneBackend.setup.entity.QuizQuestionEntity;
 import RNcornerStoneBackend.RNcornerStoneBackend.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

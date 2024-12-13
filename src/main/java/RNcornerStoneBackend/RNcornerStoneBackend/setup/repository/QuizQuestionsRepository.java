@@ -1,6 +1,6 @@
-package RNcornerStoneBackend.RNcornerStoneBackend.Setup.repository;
+package RNcornerStoneBackend.RNcornerStoneBackend.setup.repository;
 
-import RNcornerStoneBackend.RNcornerStoneBackend.Setup.entity.QuizQuestionEntity;
+import RNcornerStoneBackend.RNcornerStoneBackend.setup.entity.QuizQuestionEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

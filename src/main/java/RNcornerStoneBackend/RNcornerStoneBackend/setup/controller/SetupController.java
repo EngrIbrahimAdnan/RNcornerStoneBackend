@@ -1,9 +1,8 @@
-package RNcornerStoneBackend.RNcornerStoneBackend.Setup.controller;
+package RNcornerStoneBackend.RNcornerStoneBackend.setup.controller;
 
-import RNcornerStoneBackend.RNcornerStoneBackend.Setup.service.SetupService;
+import RNcornerStoneBackend.RNcornerStoneBackend.setup.service.SetupService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,10 +18,12 @@ public class SetupController {
         this.setupService = setupService;
     }
 
+    // endpoint to add all quiz questions defined from a json file to database for automation
     @PostMapping("/loadBankQuizQuestions")
     public ResponseEntity<Map<String, Object>> testController() {
 
-        String requestStatus = setupService.addQuizQuestionsToRepository();
+        // returns null only if everything is successful, otherwise it returns the string stating the issue found
+        String requestStatus = setupService.addQuestionsToDatabaseFromFile("quiz_questions_bank.json");
 
         if (requestStatus==null) {
             return ResponseEntity.status(HttpStatus.CREATED).body(Map.of(
@@ -32,9 +33,8 @@ public class SetupController {
         } else {// otherwise, the required missing field is highlighted to client
             return ResponseEntity.badRequest().body(Map.of(
                     "status", "error",
-                    "message", "Failed adding all Quiz Questions to database."
+                    "message", requestStatus
             ));
         }
     }
-
 }

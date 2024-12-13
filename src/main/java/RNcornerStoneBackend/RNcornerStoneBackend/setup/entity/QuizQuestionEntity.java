@@ -1,4 +1,4 @@
-package RNcornerStoneBackend.RNcornerStoneBackend.Setup.entity;
+package RNcornerStoneBackend.RNcornerStoneBackend.setup.entity;
 
 import RNcornerStoneBackend.RNcornerStoneBackend.enums.Levels;
 import jakarta.persistence.Entity;
