@@ -21,9 +21,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean CreateUserAccount(CreateUserRequest request) {
+    public UserResponse CreateUserAccount(CreateUserRequest request) {
         if (request.getUsername()==null || request.getPassword()==null || request.getEmail()==null){
-            return true;
+            throw new RuntimeException("Username and password are required");
         }
         if (userRepository.existsByEmail(request.getEmail())) {
             throw new RuntimeException("Email already exists");

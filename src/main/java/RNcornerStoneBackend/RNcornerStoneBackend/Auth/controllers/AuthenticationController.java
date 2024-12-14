@@ -5,6 +5,7 @@ import RNcornerStoneBackend.RNcornerStoneBackend.Auth.services.JwtService;
 import RNcornerStoneBackend.RNcornerStoneBackend.User.bo.CreateUserRequest;
 import RNcornerStoneBackend.RNcornerStoneBackend.User.bo.LoginResponse;
 import RNcornerStoneBackend.RNcornerStoneBackend.User.bo.LoginUserRequest;
+import RNcornerStoneBackend.RNcornerStoneBackend.User.bo.UserResponse;
 import RNcornerStoneBackend.RNcornerStoneBackend.User.entity.UserEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,10 +26,10 @@ public class AuthenticationController {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<UserEntity> register(@RequestBody CreateUserRequest registerUserDto) {
-        UserEntity registeredUser = authenticationService.signup(registerUserDto);
+    public ResponseEntity<UserResponse> register(@RequestBody CreateUserRequest registerUserDto) {
+        UserResponse userResponse  = authenticationService.signup(registerUserDto);
 
-        return ResponseEntity.ok(registeredUser);
+        return ResponseEntity.ok(userResponse);
     }
 
     @PostMapping("/login")
