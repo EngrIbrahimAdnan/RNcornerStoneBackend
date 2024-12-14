@@ -1,4 +1,4 @@
-package RNcornerStoneBackend.RNcornerStoneBackend.bo;
+package RNcornerStoneBackend.RNcornerStoneBackend.user.bo;
 
 public class CreateUserRequest {
     private String username;

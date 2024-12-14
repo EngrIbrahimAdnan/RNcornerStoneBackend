@@ -1,9 +1,9 @@
-package RNcornerStoneBackend.RNcornerStoneBackend.controller;
+package RNcornerStoneBackend.RNcornerStoneBackend.user.controller;
 
 
-import RNcornerStoneBackend.RNcornerStoneBackend.bo.CreateUserRequest;
-import RNcornerStoneBackend.RNcornerStoneBackend.setup.entity.QuizQuestionEntity;
-import RNcornerStoneBackend.RNcornerStoneBackend.service.UserService;
+import RNcornerStoneBackend.RNcornerStoneBackend.user.bo.CreateUserRequest;
+import RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.entity.QuizQuestionEntity;
+import RNcornerStoneBackend.RNcornerStoneBackend.user.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

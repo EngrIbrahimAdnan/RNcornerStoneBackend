@@ -1,9 +1,11 @@
-package RNcornerStoneBackend.RNcornerStoneBackend.service;
+package RNcornerStoneBackend.RNcornerStoneBackend.user.service;
 
-import RNcornerStoneBackend.RNcornerStoneBackend.entity.UserEntity;
-import RNcornerStoneBackend.RNcornerStoneBackend.bo.CreateUserRequest;
-import RNcornerStoneBackend.RNcornerStoneBackend.repository.UserRepository;
+import RNcornerStoneBackend.RNcornerStoneBackend.user.entity.UserEntity;
+import RNcornerStoneBackend.RNcornerStoneBackend.user.bo.CreateUserRequest;
+import RNcornerStoneBackend.RNcornerStoneBackend.user.repository.UserRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -16,6 +18,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Boolean CreateUserAccount(CreateUserRequest request) {
+
         if (request.getUsername()==null || request.getPassword()==null){
             return true;
         }
@@ -23,9 +26,13 @@ public class UserServiceImpl implements UserService {
         userEntity.setUsername(request.getUsername().toLowerCase());
         userEntity.setPassword(request.getPassword());
 
-//        .save(account); // Save the account entity
-
         userRepository.save(userEntity);
         return false;
     }
+
+    @Override
+    public Optional<UserEntity> getUserById(Long id){
+        return userRepository.findById(id);
+    }
+
 }

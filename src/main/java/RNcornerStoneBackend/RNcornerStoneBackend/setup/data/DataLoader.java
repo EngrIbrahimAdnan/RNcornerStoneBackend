@@ -1,6 +1,7 @@
 package RNcornerStoneBackend.RNcornerStoneBackend.setup.data;
 
-import RNcornerStoneBackend.RNcornerStoneBackend.setup.entity.QuizQuestionEntity;
+import RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.entity.QuizQuestionEntity;
+import RNcornerStoneBackend.RNcornerStoneBackend.user.entity.UserEntity;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -9,22 +10,17 @@ import java.util.List;
 
 public class DataLoader {
 
-
-
-    public static List<QuizQuestionEntity> loadQuizQuestions(String fileName) {
+    public static <T> List<T> loadEntities(String fileName, TypeReference<List<T>> typeReference) {
         ObjectMapper objectMapper = new ObjectMapper();
 
         // Load the file from the resources directory
-        try (InputStream inputStream = DataLoader.class.getResourceAsStream("/predefinedData/"+fileName)) {
+        try (InputStream inputStream = DataLoader.class.getResourceAsStream("/predefinedData/" + fileName)) {
 
-            // Check if the file is found in the classpath
-            if (inputStream == null) {
-                throw new RuntimeException("quiz_questions_bank.json file not found in the resources.");
-            }
+            // Map the JSON content to a List of the specified type
+            return objectMapper.readValue(inputStream, typeReference);
 
-            // Map the JSON content to a List of QuizQuestionEntity objects
-            return objectMapper.readValue(inputStream, new TypeReference<List<QuizQuestionEntity>>() {});
         } catch (Exception e) {
+            // Return null if there is an error (e.g., file not found or parsing error)
             return null;
         }
     }

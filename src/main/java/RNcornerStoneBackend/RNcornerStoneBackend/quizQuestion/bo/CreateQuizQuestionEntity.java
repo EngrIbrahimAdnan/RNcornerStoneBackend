@@ -1,18 +1,8 @@
-package RNcornerStoneBackend.RNcornerStoneBackend.setup.entity;
+package RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.bo;
 
-import RNcornerStoneBackend.RNcornerStoneBackend.enums.Levels;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.enums.Levels;
 
-@Entity
-public class QuizQuestionEntity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+public class CreateQuizQuestionEntity {
     private String questionText;
     private String option_a;
     private String option_b;
