@@ -1,6 +1,7 @@
 package RNcornerStoneBackend.RNcornerStoneBackend.User.bo;
 
-import javax.management.relation.Role;
+
+import RNcornerStoneBackend.RNcornerStoneBackend.User.entity.Role;
 
 public class CreateUserRequest {
     private String email;

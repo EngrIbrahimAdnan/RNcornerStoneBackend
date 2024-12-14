@@ -28,10 +28,15 @@ public class ChildService {
             throw new RuntimeException("Only parents can add children");
         }
 
+        if (request.getUsername() == null || request.getEmail() == null || request.getPassword() == null) {
+            throw new IllegalArgumentException("Username, email, and password cannot be null");
+        }
+
         UserEntity childUser = new UserEntity();
         childUser.setUsername(request.getUsername());
         childUser.setEmail(request.getEmail());
         childUser.setRole(Role.CHILD);
+        childUser.setPassword(request.getPassword());
 
         UserEntity savedChildUser = userRepository.save(childUser);
 
@@ -40,6 +45,8 @@ public class ChildService {
                     child.setParent(parent);
                     child.setBalance(request.getInitialBalance());
                     child.setDateOfBirth(request.getDateOfBirth());
+                    child.setEmail(request.getEmail());
+                    child.setUsername(request.getUsername());
 
 
         ChildEntity savedChild = childRepository.save(child);
@@ -49,6 +56,8 @@ public class ChildService {
         response.setBalance(child.getBalance());
         response.setDateOfBirth(child.getDateOfBirth());
         response.setParentId(child.getParent().getId());
+        response.setUsername(childUser.getUsername());
+        response.setEmail(childUser.getEmail());
 
 
         return response;

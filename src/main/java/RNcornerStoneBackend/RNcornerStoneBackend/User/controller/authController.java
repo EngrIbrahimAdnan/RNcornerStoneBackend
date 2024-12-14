@@ -1,64 +1,78 @@
 package RNcornerStoneBackend.RNcornerStoneBackend.User.controller;
 
 
-import RNcornerStoneBackend.RNcornerStoneBackend.User.bo.CreateUserRequest;
+import RNcornerStoneBackend.RNcornerStoneBackend.User.bo.UserResponse;
 import RNcornerStoneBackend.RNcornerStoneBackend.User.entity.UserEntity;
-import RNcornerStoneBackend.RNcornerStoneBackend.User.service.UserService;
-import org.springframework.http.HttpStatus;
+import RNcornerStoneBackend.RNcornerStoneBackend.User.service.UserServiceImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/user")
 public class authController {
 
-    private final UserService userService;
+    private final UserServiceImpl userService;
 
-    public authController(UserService userService) {
+    public authController(UserServiceImpl userService) {
         this.userService = userService;
     }
 
-    @PostMapping("/create")
-    public ResponseEntity<Map<String, Object>>  createUser(@RequestBody CreateUserRequest request){
-        Boolean requestStatus = userService.CreateUserAccount(request);
-        if (!requestStatus) {
-            return ResponseEntity.status(HttpStatus.CREATED).body(Map.of(
-                    "status", "success",
-                    "message", "Account created."
-            ));
-        } else {// otherwise, the required missing field is highlighted to client
-            return ResponseEntity.badRequest().body(Map.of(
-                    "status", "error",
-                    "message", "Account creation failed."
-            ));
-        }
+//    @PostMapping("/create")
+//    public ResponseEntity<Map<String, Object>>  createUser(@RequestBody CreateUserRequest request){
+//        UserResponse requestStatus = userService.CreateUserAccount(request);
+//        if (requestStatus == null) {
+//            return ResponseEntity.status(HttpStatus.CREATED).body(Map.of(
+//                    "status", "success",
+//                    "message", "Account created."
+//            ));
+//        } else {// otherwise, the required missing field is highlighted to client
+//            return ResponseEntity.badRequest().body(Map.of(
+//                    "status", "error",
+//                    "message", "Account creation failed."
+//            ));
+//        }
+//
+//    }
 
-    }
-
-    @GetMapping("/yourname")
-    public String testController(@RequestBody String name) {
-        return "My name is " + name;
-    }
+//    @GetMapping("/yourname")
+//    public String testController(@RequestBody String name) {
+//        return "My name is " + name;
+//    }
 
 
     @GetMapping("/me")
-    public ResponseEntity<UserEntity> authenticatedUser() {
+    public ResponseEntity<UserResponse> authenticatedUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         UserEntity currentUser = (UserEntity) authentication.getPrincipal();
 
-        return ResponseEntity.ok(currentUser);
+        UserResponse userResponse = new UserResponse();
+        userResponse.setId(currentUser.getId());
+        userResponse.setEmail(currentUser.getEmail());
+        userResponse.setUsername(currentUser.getUsername());
+        userResponse.setRole(currentUser.getRole());
+
+        return ResponseEntity.ok(userResponse);
     }
 
     @GetMapping("/")
-    public ResponseEntity<List<UserEntity>> allUsers() {
+    public ResponseEntity<List<UserResponse>> allUsers() {
         List <UserEntity> users = userService.allUsers();
-
-        return ResponseEntity.ok(users);
+        List<UserResponse> userResponses = users.stream()
+                .map(user -> {
+                    UserResponse userResponse = new UserResponse();
+                    userResponse.setId(user.getId());
+                    userResponse.setEmail(user.getEmail());
+                    userResponse.setUsername(user.getUsername());
+                    userResponse.setRole(user.getRole());
+                    return userResponse;
+                })
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(userResponses);
     }
 }

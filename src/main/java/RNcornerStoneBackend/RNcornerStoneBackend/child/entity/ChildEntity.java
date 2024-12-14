@@ -20,6 +20,12 @@ public class ChildEntity {
     @JoinColumn(name = "parent_id", nullable = false)
     private UserEntity parent;
 
+    @Column(nullable = false)
+    private String username;
+
+    @Column(nullable = false)
+    private String email;
+
     @Column(nullable = true)
     private Double Balance;
 
@@ -32,6 +38,23 @@ public class ChildEntity {
         this.parent = parent;
         this.Balance = Balance;
         this.DateOfBirth = DateOfBirth;
+    }
+
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Long getId() {
