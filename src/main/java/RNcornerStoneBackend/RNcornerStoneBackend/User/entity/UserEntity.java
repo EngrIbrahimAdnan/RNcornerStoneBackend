@@ -1,5 +1,8 @@
 package RNcornerStoneBackend.RNcornerStoneBackend.User.entity;
 
+import RNcornerStoneBackend.RNcornerStoneBackend.Chore.Entity.ChoreEntity;
+import RNcornerStoneBackend.RNcornerStoneBackend.child.entity.ChildEntity;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -29,6 +32,29 @@ public class UserEntity implements UserDetails {
     @Column(nullable = false)
     private Role role;
 
+    @OneToMany(mappedBy = "parent", orphanRemoval = true, fetch = FetchType.EAGER)
+    @JsonIgnoreProperties(value = {"parent"})
+    private List<ChildEntity> children;
+
+    @OneToMany(mappedBy = "parent", orphanRemoval = true, fetch = FetchType.EAGER)
+    @JsonIgnoreProperties(value = {"parent"})
+    private List<ChoreEntity> chores;
+
+    public List<ChildEntity> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<ChildEntity> children) {
+        this.children = children;
+    }
+
+    public List<ChoreEntity> getChores() {
+        return chores;
+    }
+
+    public void setChores(List<ChoreEntity> chores) {
+        this.chores = chores;
+    }
 
     public Role getRole() {
         return role;
