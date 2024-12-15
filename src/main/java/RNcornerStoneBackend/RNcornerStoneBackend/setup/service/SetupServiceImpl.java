@@ -1,17 +1,12 @@
 package RNcornerStoneBackend.RNcornerStoneBackend.setup.service;
 
 import RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.bo.CreateQuizQuestionEntity;
-import RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.service.QuestionService;
+import RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.service.QuizQuestionService;
 import RNcornerStoneBackend.RNcornerStoneBackend.setup.data.DataLoader;
-import RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.entity.QuizQuestionEntity;
-import RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.repository.QuizQuestionsRepository;
 import RNcornerStoneBackend.RNcornerStoneBackend.user.bo.CreateUserRequest;
-import RNcornerStoneBackend.RNcornerStoneBackend.user.entity.UserEntity;
-import RNcornerStoneBackend.RNcornerStoneBackend.user.repository.UserRepository;
 import RNcornerStoneBackend.RNcornerStoneBackend.user.service.UserService;
 import com.fasterxml.jackson.core.type.TypeReference;
 import org.springframework.beans.BeanUtils;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,10 +14,10 @@ import java.util.List;
 @Service
 public class SetupServiceImpl implements SetupService {
 
-    private final QuestionService questionService;
+    private final QuizQuestionService questionService;
     private final UserService userService;
 
-    public SetupServiceImpl(QuestionService questionService, UserService userService) {
+    public SetupServiceImpl(QuizQuestionService questionService, UserService userService) {
         this.questionService = questionService;
         this.userService = userService;
     }

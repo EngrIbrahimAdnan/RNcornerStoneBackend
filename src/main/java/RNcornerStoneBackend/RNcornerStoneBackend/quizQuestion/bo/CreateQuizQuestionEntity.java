@@ -1,18 +1,33 @@
 package RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.bo;
 
 import RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.enums.Levels;
+import jakarta.validation.constraints.NotNull;
 
 public class CreateQuizQuestionEntity {
+
+    @NotNull(message = "The 'questionText' field is required and it's missing")
     private String questionText;
+
+    @NotNull(message = "The 'option_a' field is required and it's missing")
     private String option_a;
+
+    @NotNull(message = "The 'option_b' field is required and it's missing")
     private String option_b;
+
+    @NotNull(message = "The 'option_c' field is required and it's missing")
     private String option_c;
+
+    @NotNull(message = "The 'option_d' field is required and it's missing")
     private String option_d;
 
+
+    @NotNull(message = "The 'correctOption' field is required and it's missing")
     private String correctOption;
 
+    @NotNull(message = "The 'level' field is required and it's missing")
     private Levels level;
 
+    @NotNull(message = "The 'rewardAmount' field is required and it's missing")
     private Double rewardAmount;
 
     public String getQuestionText() {

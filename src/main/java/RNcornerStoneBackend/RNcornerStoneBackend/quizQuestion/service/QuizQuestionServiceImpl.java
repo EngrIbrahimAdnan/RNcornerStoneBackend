@@ -3,16 +3,15 @@ package RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.service;
 import RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.bo.CreateQuizQuestionEntity;
 import RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.entity.QuizQuestionEntity;
 import RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.repository.QuizQuestionsRepository;
-import RNcornerStoneBackend.RNcornerStoneBackend.user.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
-public class QuestionServiceImpl implements QuestionService{
+public class QuizQuestionServiceImpl implements QuizQuestionService {
     private final QuizQuestionsRepository quizQuestionsRepository;
 
-    public QuestionServiceImpl(QuizQuestionsRepository quizQuestionsRepository) {
+    public QuizQuestionServiceImpl(QuizQuestionsRepository quizQuestionsRepository) {
         this.quizQuestionsRepository = quizQuestionsRepository;
     }
 
@@ -22,8 +21,11 @@ public class QuestionServiceImpl implements QuestionService{
     }
 
     @Override
-    public void addQuestion(CreateQuizQuestionEntity request){
+    public String addQuestion(CreateQuizQuestionEntity request){
 
+
+        // do checkups if necessary here before assigning saving request to repository
+        // e.g. identical questions, expected length of certain fields
         QuizQuestionEntity quizQuestion = new QuizQuestionEntity();
 
         quizQuestion.setQuestionText(request.getQuestionText());
@@ -38,8 +40,11 @@ public class QuestionServiceImpl implements QuestionService{
         try {
             quizQuestionsRepository.save(quizQuestion);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            return "Error adding '"+quizQuestion.getQuestionText()+"' question: "+e;
         }
+        return null;
+
+
     }
 
 }

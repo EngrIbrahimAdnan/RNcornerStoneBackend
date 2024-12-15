@@ -1,10 +1,13 @@
 package RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.entity;
 
 import RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.enums.Levels;
+import RNcornerStoneBackend.RNcornerStoneBackend.user.entity.UserEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+
+import java.util.Objects;
 
 @Entity
 public class QuizQuestionEntity {
@@ -97,4 +100,18 @@ public class QuizQuestionEntity {
     public void setRewardAmount(Double rewardAmount) {
         this.rewardAmount = rewardAmount;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        QuizQuestionEntity that = (QuizQuestionEntity) o;
+        return Objects.equals(id, that.id) && Objects.equals(questionText, that.questionText) && Objects.equals(option_a, that.option_a) && Objects.equals(option_b, that.option_b) && Objects.equals(option_c, that.option_c) && Objects.equals(option_d, that.option_d) && Objects.equals(correctOption, that.correctOption) && Objects.equals(level, that.level) && Objects.equals(rewardAmount, that.rewardAmount);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, questionText, option_a, option_b, option_c, option_d, correctOption, level, rewardAmount);
+    }
+
 }

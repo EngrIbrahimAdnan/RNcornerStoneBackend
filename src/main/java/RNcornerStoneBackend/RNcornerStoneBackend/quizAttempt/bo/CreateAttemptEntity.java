@@ -17,7 +17,6 @@ public class CreateAttemptEntity {
     private QuizQuestionEntity quizQuestionEntity;
 
     @NotNull(message = "The 'answer' field is required and it's missing")
-
     private Boolean answer;
 
     @NotNull(message = "The 'date' field is required and it's missing")
