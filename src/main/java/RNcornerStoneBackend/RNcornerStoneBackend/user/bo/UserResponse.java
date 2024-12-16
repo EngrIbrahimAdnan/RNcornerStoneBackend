@@ -8,6 +8,10 @@ public class UserResponse {
     private Long id;
     private Role role;
 
+    private String token;
+    private long expiresIn;
+
+
     public String getEmail() {
         return email;
     }

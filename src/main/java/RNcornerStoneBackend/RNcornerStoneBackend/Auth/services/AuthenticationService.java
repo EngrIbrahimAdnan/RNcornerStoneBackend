@@ -4,6 +4,7 @@ import RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.entity.QuizQuestio
 import RNcornerStoneBackend.RNcornerStoneBackend.setup.service.SetupService;
 import RNcornerStoneBackend.RNcornerStoneBackend.user.bo.CreateUserRequest;
 import RNcornerStoneBackend.RNcornerStoneBackend.user.bo.LoginUserRequest;
+import RNcornerStoneBackend.RNcornerStoneBackend.user.entity.Role;
 import RNcornerStoneBackend.RNcornerStoneBackend.user.entity.UserEntity;
 import RNcornerStoneBackend.RNcornerStoneBackend.user.repository.UserRepository;
 import RNcornerStoneBackend.RNcornerStoneBackend.user.service.UserService;
@@ -46,7 +47,9 @@ public class AuthenticationService {
         newRequest.setUsername(input.getUsername());
         newRequest.setPassword(passwordEncoder.encode(input.getPassword()));
         newRequest.setEmail(input.getEmail());
-        newRequest.setRole(input.getRole());
+        newRequest.setRole(Role.PARENT);
+
+
         return userService.CreateUserAccount(newRequest);
 
     }

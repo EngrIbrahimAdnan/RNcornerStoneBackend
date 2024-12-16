@@ -13,7 +13,6 @@ public class CreateUserRequest {
     @NotNull(message = "The 'email' field is required and it's missing")
     private String email;
 
-    @NotNull(message = "The 'role' field is required and it's missing")
     private Role role;
 
     public Role getRole() {
