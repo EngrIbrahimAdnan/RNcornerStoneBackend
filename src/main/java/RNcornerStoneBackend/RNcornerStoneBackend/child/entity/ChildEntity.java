@@ -1,9 +1,11 @@
 package RNcornerStoneBackend.RNcornerStoneBackend.child.entity;
 
+import RNcornerStoneBackend.RNcornerStoneBackend.Chore.Entity.ChoreEntity;
 import RNcornerStoneBackend.RNcornerStoneBackend.user.entity.UserEntity;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.List;
 
 
 @Entity
@@ -19,6 +21,10 @@ public class ChildEntity {
     @ManyToOne
     @JoinColumn(name = "parent_id", nullable = false)
     private UserEntity parent;
+
+    @OneToMany(mappedBy = "child")
+    private List<ChoreEntity> chores;
+
 
     @Column(nullable = false)
     private String username;

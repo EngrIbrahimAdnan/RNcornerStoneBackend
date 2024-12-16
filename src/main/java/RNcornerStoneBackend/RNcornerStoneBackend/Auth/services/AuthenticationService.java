@@ -42,9 +42,12 @@ public class AuthenticationService {
     }
 
     public String signup(CreateUserRequest input) {
-//        String encodedPassword= passwordEncoder.encode(input.getPassword()));
-//        return userService.CreateUserAccount(input, encodedPassword);
-                return userService.CreateUserAccount(input);
+        CreateUserRequest newRequest = new CreateUserRequest();
+        newRequest.setUsername(input.getUsername());
+        newRequest.setPassword(passwordEncoder.encode(input.getPassword()));
+        newRequest.setEmail(input.getEmail());
+        newRequest.setRole(input.getRole());
+        return userService.CreateUserAccount(newRequest);
 
     }
 
