@@ -11,5 +11,6 @@ public interface ChoreRepository extends JpaRepository<ChoreEntity, Long> {
     List<ChoreEntity> findByChildId(Long childId);
     List<ChoreEntity> findByChildIdAndStatus(Long childId, Status status);
     List<ChoreEntity> findByParentIdAndStatus(Long parentId, Status status);
+
 }
 
