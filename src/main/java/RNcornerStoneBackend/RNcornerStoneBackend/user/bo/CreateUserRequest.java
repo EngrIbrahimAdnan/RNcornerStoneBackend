@@ -1,9 +1,37 @@
-package RNcornerStoneBackend.RNcornerStoneBackend.user.bo;
+package RNcornerStoneBackend.RNcornerStoneBackend.User.bo;
+
+import RNcornerStoneBackend.RNcornerStoneBackend.User.entity.Role;
+import jakarta.validation.constraints.NotNull;
 
 public class CreateUserRequest {
+
+    @NotNull(message = "The 'username' field is required and it's missing")
     private String username;
+
+    @NotNull(message = "The 'password' field is required and it's missing")
     private String password;
 
+    @NotNull(message = "The 'email' field is required and it's missing")
+    private String email;
+
+    @NotNull(message = "The 'role' field is required and it's missing")
+    private Role role;
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public String getUsername() {
         return username;

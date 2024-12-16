@@ -1,7 +1,7 @@
 package RNcornerStoneBackend.RNcornerStoneBackend.quizAttempt.bo;
 
 import RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.entity.QuizQuestionEntity;
-import RNcornerStoneBackend.RNcornerStoneBackend.user.entity.UserEntity;
+import RNcornerStoneBackend.RNcornerStoneBackend.User.entity.UserEntity;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
 

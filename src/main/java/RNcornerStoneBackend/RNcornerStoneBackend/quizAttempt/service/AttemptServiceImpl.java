@@ -7,9 +7,9 @@ import RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.bo.CreateQuizQuest
 import RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.entity.QuizQuestionEntity;
 import RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.service.QuizQuestionService;
 import RNcornerStoneBackend.RNcornerStoneBackend.setup.service.SetupService;
-import RNcornerStoneBackend.RNcornerStoneBackend.user.entity.UserEntity;
-import RNcornerStoneBackend.RNcornerStoneBackend.user.repository.UserRepository;
-import RNcornerStoneBackend.RNcornerStoneBackend.user.service.UserService;
+import RNcornerStoneBackend.RNcornerStoneBackend.User.entity.UserEntity;
+import RNcornerStoneBackend.RNcornerStoneBackend.User.repository.UserRepository;
+import RNcornerStoneBackend.RNcornerStoneBackend.User.service.UserService;
 import com.fasterxml.jackson.core.type.TypeReference;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;

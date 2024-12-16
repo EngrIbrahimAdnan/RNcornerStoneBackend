@@ -1,31 +1,77 @@
-package RNcornerStoneBackend.RNcornerStoneBackend.user.entity;
+package RNcornerStoneBackend.RNcornerStoneBackend.User.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import RNcornerStoneBackend.RNcornerStoneBackend.Chore.Entity.ChoreEntity;
+import RNcornerStoneBackend.RNcornerStoneBackend.child.entity.ChildEntity;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.persistence.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import RNcornerStoneBackend.RNcornerStoneBackend.User.entity.Role;
 
+
+import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
 
+
 @Entity
-public class UserEntity {
+public class UserEntity implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(unique = true, length = 100, nullable = false)
+    private String email;
+
+    @Column(nullable = false)
     private String username;
+
+    @Column(nullable = false)
     private String password;
 
-    public Long getId() {
-        return id;
+    @Column(nullable = false)
+    private Role role;
+
+    @OneToMany(mappedBy = "parent", orphanRemoval = true, fetch = FetchType.EAGER)
+    @JsonIgnoreProperties(value = {"parent"})
+    private List<ChildEntity> children;
+
+    @OneToMany(mappedBy = "parent", orphanRemoval = true, fetch = FetchType.EAGER)
+    @JsonIgnoreProperties(value = {"parent"})
+    private List<ChoreEntity> chores;
+
+    public List<ChildEntity> getChildren() {
+        return children;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setChildren(List<ChildEntity> children) {
+        this.children = children;
+    }
+
+    public List<ChoreEntity> getChores() {
+        return chores;
+    }
+
+    public void setChores(List<ChoreEntity> chores) {
+        this.chores = chores;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public String getUsername() {
         return username;
+    }
+
+    public String getEmail() {return email;}
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setUsername(String username) {
@@ -41,17 +87,35 @@ public class UserEntity {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        UserEntity that = (UserEntity) o;
-        return Objects.equals(id, that.id) &&
-                Objects.equals(username, that.username) &&
-                Objects.equals(password, that.password);
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of();
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(id, username, password);
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
