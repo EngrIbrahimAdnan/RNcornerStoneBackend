@@ -3,12 +3,10 @@ package RNcornerStoneBackend.RNcornerStoneBackend.Auth.controllers;
 import RNcornerStoneBackend.RNcornerStoneBackend.Auth.services.AuthenticationService;
 import RNcornerStoneBackend.RNcornerStoneBackend.Auth.services.JwtService;
 import RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.entity.QuizQuestionEntity;
-import RNcornerStoneBackend.RNcornerStoneBackend.setup.service.SetupService;
 import RNcornerStoneBackend.RNcornerStoneBackend.user.bo.CreateUserRequest;
 import RNcornerStoneBackend.RNcornerStoneBackend.user.bo.LoginResponse;
 import RNcornerStoneBackend.RNcornerStoneBackend.user.bo.LoginUserRequest;
 import RNcornerStoneBackend.RNcornerStoneBackend.user.entity.UserEntity;
-import RNcornerStoneBackend.RNcornerStoneBackend.user.service.UserService;
 import com.fasterxml.jackson.core.type.TypeReference;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -52,7 +50,7 @@ public class AuthenticationController {
             ));
         }
 
-        String requestStatus = authenticationService.signup(request);
+        String requestStatus = authenticationService.signUp(request);
         if (requestStatus == null) {
             return ResponseEntity.status(HttpStatus.CREATED).body(Map.of(
                     "status", "success",
@@ -61,7 +59,7 @@ public class AuthenticationController {
         } else {// otherwise, the required missing field is highlighted to client
             return ResponseEntity.badRequest().body(Map.of(
                     "status", "error",
-                    "message", requestStatus
+                    "message", "Error creating Account"
             ));
         }
 

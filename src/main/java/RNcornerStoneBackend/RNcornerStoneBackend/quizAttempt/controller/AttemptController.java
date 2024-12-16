@@ -2,8 +2,6 @@ package RNcornerStoneBackend.RNcornerStoneBackend.quizAttempt.controller;
 
 import RNcornerStoneBackend.RNcornerStoneBackend.quizAttempt.bo.CreateAttemptEntity;
 import RNcornerStoneBackend.RNcornerStoneBackend.quizAttempt.service.AttemptService;
-import RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.entity.QuizQuestionEntity;
-import RNcornerStoneBackend.RNcornerStoneBackend.setup.service.SetupService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

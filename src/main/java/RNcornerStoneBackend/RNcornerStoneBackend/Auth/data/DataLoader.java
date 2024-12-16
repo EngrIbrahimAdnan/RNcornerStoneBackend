@@ -1,4 +1,4 @@
-package RNcornerStoneBackend.RNcornerStoneBackend.setup.data;
+package RNcornerStoneBackend.RNcornerStoneBackend.Auth.data;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
