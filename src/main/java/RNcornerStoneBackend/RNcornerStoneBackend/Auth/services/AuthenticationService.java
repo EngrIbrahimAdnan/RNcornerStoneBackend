@@ -6,6 +6,7 @@ import RNcornerStoneBackend.RNcornerStoneBackend.User.bo.UserResponse;
 import RNcornerStoneBackend.RNcornerStoneBackend.User.entity.Role;
 import RNcornerStoneBackend.RNcornerStoneBackend.User.entity.UserEntity;
 import RNcornerStoneBackend.RNcornerStoneBackend.User.repository.UserRepository;
+import RNcornerStoneBackend.RNcornerStoneBackend.User.service.UserService;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -14,39 +15,46 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AuthenticationService {
-    private final UserRepository userRepository;
-
+    private final UserService userService;
     private final PasswordEncoder passwordEncoder;
-
     private final AuthenticationManager authenticationManager;
 
+    private final UserRepository userRepository;
+
+
     public AuthenticationService(
-            UserRepository userRepository,
+            UserService userService,
             AuthenticationManager authenticationManager,
-            PasswordEncoder passwordEncoder
+            PasswordEncoder passwordEncoder,
+            UserRepository userRepository
     ) {
         this.authenticationManager = authenticationManager;
-        this.userRepository = userRepository;
+        this.userService = userService;
         this.passwordEncoder = passwordEncoder;
+        this.userRepository = userRepository;
+
     }
 
-    public UserResponse signup(CreateUserRequest input) {
-        UserEntity userEntity = new UserEntity();
-                userEntity.setEmail(input.getEmail());
-                userEntity.setUsername(input.getUsername());
-                userEntity.setPassword(passwordEncoder.encode(input.getPassword()));
-                userEntity.setRole(input.getRole());
+    public String signup(CreateUserRequest input) {
 
-        UserEntity savedUserEntity = userRepository.save(userEntity);
+        if (!input.getRole().name().equals("CHILD") && !input.getRole().name().equals("PARENT")) {
+            return "invalid Role input";
+        }
 
 
-        UserResponse userResponse = new UserResponse();
-        userResponse.setId(savedUserEntity.getId());
-        userResponse.setEmail(savedUserEntity.getEmail());
-        userResponse.setUsername(savedUserEntity.getUsername());
-        userResponse.setRole(savedUserEntity.getRole());
+        try{
+            UserEntity userEntity = new UserEntity();
+            userEntity.setEmail(input.getEmail());
+            userEntity.setUsername(input.getUsername());
+            userEntity.setPassword(passwordEncoder.encode(input.getPassword()));
+            userEntity.setRole(input.getRole());
+            userService.CreateAuthUserAccount(userEntity);
 
-        return userResponse;
+        } catch (Exception e) {
+            return "Error creating account with user request.";
+        }
+
+        return null;
     }
 
     public UserEntity authenticate(LoginUserRequest input) {

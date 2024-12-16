@@ -7,11 +7,19 @@ import RNcornerStoneBackend.RNcornerStoneBackend.User.bo.LoginResponse;
 import RNcornerStoneBackend.RNcornerStoneBackend.User.bo.LoginUserRequest;
 import RNcornerStoneBackend.RNcornerStoneBackend.User.bo.UserResponse;
 import RNcornerStoneBackend.RNcornerStoneBackend.User.entity.UserEntity;
+import RNcornerStoneBackend.RNcornerStoneBackend.User.service.UserService;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @RequestMapping("/auth")
 @RestController
@@ -20,17 +28,46 @@ public class AuthenticationController {
 
     private final AuthenticationService authenticationService;
 
-    public AuthenticationController(JwtService jwtService, AuthenticationService authenticationService) {
+    private final UserService userService;
+    public AuthenticationController(JwtService jwtService, AuthenticationService authenticationService, UserService userService) {
         this.jwtService = jwtService;
         this.authenticationService = authenticationService;
+        this.userService = userService;
     }
+
 
     @PostMapping("/signup")
-    public ResponseEntity<UserResponse> register(@RequestBody CreateUserRequest registerUserDto) {
-        UserResponse userResponse  = authenticationService.signup(registerUserDto);
+    public ResponseEntity<Map<String, Object>> register(@Valid @RequestBody CreateUserRequest request, BindingResult bindingResult) {
 
-        return ResponseEntity.ok(userResponse);
+        // If there are validation errors, return them
+        if (bindingResult.hasErrors()) {
+            List<String> errorMessages = bindingResult.getFieldErrors().stream()
+                    .map(fieldError -> fieldError.getField() + ": " + fieldError.getDefaultMessage())
+                    .collect(Collectors.toList());
+
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of(
+                    "status", "error",
+                    "message", "Validation failed",
+                    "errors", errorMessages
+            ));
+        }
+
+        String requestStatus = authenticationService.signup(request);
+        if (requestStatus==null) {
+            return ResponseEntity.status(HttpStatus.CREATED).body(Map.of(
+                    "status", "success",
+                    "message", "Account created."
+            ));
+        } else {// otherwise, the required missing field is highlighted to client
+            return ResponseEntity.badRequest().body(Map.of(
+                    "status", "error",
+                    "message", requestStatus
+            ));
+        }
+
     }
+
+
 
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> authenticate(@RequestBody LoginUserRequest loginUserDto) {

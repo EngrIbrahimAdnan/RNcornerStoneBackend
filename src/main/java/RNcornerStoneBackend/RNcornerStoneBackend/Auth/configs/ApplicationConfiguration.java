@@ -1,6 +1,7 @@
 package RNcornerStoneBackend.RNcornerStoneBackend.Auth.configs;
 
 import RNcornerStoneBackend.RNcornerStoneBackend.User.repository.UserRepository;
+import RNcornerStoneBackend.RNcornerStoneBackend.User.service.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -13,15 +14,15 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 public class ApplicationConfiguration {
-    private final UserRepository userRepository;
+    private final UserService userService;
 
-    public ApplicationConfiguration(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public ApplicationConfiguration(UserService userService) {
+        this.userService = userService;
     }
 
     @Bean
     UserDetailsService userDetailsService() {
-        return username -> userRepository.findByEmail(username)
+        return username -> userService.getUserByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
 
