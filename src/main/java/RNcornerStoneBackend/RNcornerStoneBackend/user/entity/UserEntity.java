@@ -1,4 +1,4 @@
-package RNcornerStoneBackend.RNcornerStoneBackend.User.entity;
+package RNcornerStoneBackend.RNcornerStoneBackend.user.entity;
 
 import RNcornerStoneBackend.RNcornerStoneBackend.Chore.Entity.ChoreEntity;
 import RNcornerStoneBackend.RNcornerStoneBackend.child.entity.ChildEntity;
@@ -6,12 +6,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import RNcornerStoneBackend.RNcornerStoneBackend.User.entity.Role;
 
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
 
 
 @Entity

@@ -1,7 +1,5 @@
 package RNcornerStoneBackend.RNcornerStoneBackend.setup.data;
 
-import RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.entity.QuizQuestionEntity;
-import RNcornerStoneBackend.RNcornerStoneBackend.User.entity.UserEntity;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 

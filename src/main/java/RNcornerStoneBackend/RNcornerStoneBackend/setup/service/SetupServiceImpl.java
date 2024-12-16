@@ -1,7 +1,7 @@
 package RNcornerStoneBackend.RNcornerStoneBackend.setup.service;
 
-import RNcornerStoneBackend.RNcornerStoneBackend.User.bo.CreateUserRequest;
-import RNcornerStoneBackend.RNcornerStoneBackend.User.service.UserService;
+import RNcornerStoneBackend.RNcornerStoneBackend.user.bo.CreateUserRequest;
+import RNcornerStoneBackend.RNcornerStoneBackend.user.service.UserService;
 import RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.bo.CreateQuizQuestionEntity;
 import RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.service.QuizQuestionService;
 import RNcornerStoneBackend.RNcornerStoneBackend.setup.data.DataLoader;
