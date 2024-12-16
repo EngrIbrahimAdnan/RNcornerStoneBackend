@@ -1,9 +1,11 @@
 package RNcornerStoneBackend.RNcornerStoneBackend.child.entity;
 
+import RNcornerStoneBackend.RNcornerStoneBackend.Chore.Entity.ChoreEntity;
 import RNcornerStoneBackend.RNcornerStoneBackend.User.entity.UserEntity;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.List;
 
 
 @Entity
@@ -11,6 +13,12 @@ public class ChildEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = true)
+    private Double Balance;
+
+    @Column(nullable = false)
+    private Date DateOfBirth;
 
     @OneToOne
     @JoinColumn(name = "user_id", nullable = false)
@@ -20,17 +28,16 @@ public class ChildEntity {
     @JoinColumn(name = "parent_id", nullable = false)
     private UserEntity parent;
 
+    @OneToMany(mappedBy = "child")
+    private List<ChoreEntity> chores;
+
     @Column(nullable = false)
     private String username;
 
     @Column(nullable = false)
     private String email;
 
-    @Column(nullable = true)
-    private Double Balance;
 
-    @Column(nullable = false)
-    private Date DateOfBirth;
 
     public ChildEntity() {
         this.id = id;

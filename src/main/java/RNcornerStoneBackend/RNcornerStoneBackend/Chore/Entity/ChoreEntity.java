@@ -1,6 +1,7 @@
 package RNcornerStoneBackend.RNcornerStoneBackend.Chore.Entity;
 
 import RNcornerStoneBackend.RNcornerStoneBackend.User.entity.UserEntity;
+import RNcornerStoneBackend.RNcornerStoneBackend.child.entity.ChildEntity;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -25,7 +26,7 @@ public class ChoreEntity {
 
     @ManyToOne
     @JoinColumn(name = "child_id", nullable = false)
-    private UserEntity child;
+    private ChildEntity child;
 
     @Column(nullable = false)
     private String title;
@@ -75,11 +76,11 @@ public class ChoreEntity {
         this.status = status;
     }
 
-    public UserEntity getChild() {
+    public ChildEntity getChild() {
         return child;
     }
 
-    public void setChild(UserEntity child) {
+    public void setChild(ChildEntity child) {
         this.child = child;
     }
 

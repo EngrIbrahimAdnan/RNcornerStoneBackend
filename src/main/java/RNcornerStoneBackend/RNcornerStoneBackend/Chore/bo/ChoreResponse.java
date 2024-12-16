@@ -11,59 +11,61 @@ public class ChoreResponse {
     private Double rewardAmount;
     private Status status;
 
-    public Long getId() {
-        return id;
+
+        public Long getId() {
+            return id;
+        }
+
+        public void setId(Long id) {
+            this.id = id;
+        }
+
+        public Long getParentId() {
+            return parentId;
+        }
+
+        public void setParentId(Long parentId) {
+            this.parentId = parentId;
+        }
+
+        public Long getChildId() {
+            return childId;
+        }
+
+        public void setChildId(Long childId) {
+            this.childId = childId;
+        }
+
+        public String getTitle() {
+            return title;
+        }
+
+        public void setTitle(String title) {
+            this.title = title;
+        }
+
+        public String getDescription() {
+            return description;
+        }
+
+        public void setDescription(String description) {
+            this.description = description;
+        }
+
+        public Double getRewardAmount() {
+            return rewardAmount;
+        }
+
+        public void setRewardAmount(Double rewardAmount) {
+            this.rewardAmount = rewardAmount;
+        }
+
+        public Status getStatus() {
+            return status;
+        }
+
+        public void setStatus(Status status) {
+            this.status = status;
+        }
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getParentId() {
-        return parentId;
-    }
-
-    public void setParentId(Long parentId) {
-        this.parentId = parentId;
-    }
-
-    public Long getChildId() {
-        return childId;
-    }
-
-    public void setChildId(Long childId) {
-        this.childId = childId;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Double getRewardAmount() {
-        return rewardAmount;
-    }
-
-    public void setRewardAmount(Double rewardAmount) {
-        this.rewardAmount = rewardAmount;
-    }
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
-    }
-}
