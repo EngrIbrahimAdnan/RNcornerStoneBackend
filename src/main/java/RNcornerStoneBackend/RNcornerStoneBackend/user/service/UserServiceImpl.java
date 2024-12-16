@@ -4,6 +4,7 @@ import RNcornerStoneBackend.RNcornerStoneBackend.user.entity.UserEntity;
 import RNcornerStoneBackend.RNcornerStoneBackend.user.bo.CreateUserRequest;
 import RNcornerStoneBackend.RNcornerStoneBackend.user.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -17,28 +18,25 @@ public class UserServiceImpl implements UserService {
         this.userRepository = userRepository;
     }
 
-
     @Override
-    public Boolean CreateUserAccount(CreateUserRequest request) {
+    public String CreateUserAccount(CreateUserRequest request) {
 
-        UserEntity userEntity = new UserEntity();
-        userEntity.setUsername(request.getUsername().toLowerCase());
-        userEntity.setPassword(request.getPassword());
-        userEntity.setEmail(request.getEmail());
+        if (!request.getRole().name().equals("CHILD") && !request.getRole().name().equals("PARENT")) {
+            return "invalid Role input";
+        }
 
-        userRepository.save(userEntity);
-        return false;
-    }
-
-    @Override
-    public String CreateAuthUserAccount(UserEntity request) {
         try{
-            userRepository.save(request);
+            UserEntity userEntity = new UserEntity();
+            userEntity.setEmail(request.getEmail());
+            userEntity.setUsername(request.getUsername());
+            userEntity.setPassword(request.getPassword());
+            userEntity.setRole(request.getRole());
+            userRepository.save(userEntity);
+
         } catch (Exception e) {
-            return "Error creating an account to database";
+            return "Error creating account with user request.";
         }
         return null;
-
     }
 
 

@@ -1,5 +1,6 @@
 package RNcornerStoneBackend.RNcornerStoneBackend.Auth.configs;
 
+import RNcornerStoneBackend.RNcornerStoneBackend.Auth.services.AuthenticationService;
 import RNcornerStoneBackend.RNcornerStoneBackend.user.service.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,26 +1,38 @@
 [
   {
     "username": "Ibrahim",
-    "password": "password"
+    "password": "password",
+    "email":"Ibrahim@email.com",
+    "role":"PARENT"
   },
   {
     "username": "Danah",
-    "password": "password"
+    "password": "password",
+    "email":"Danah@email.com",
+    "role":"PARENT"
   },
   {
     "username": "Fajri",
-    "password": "password"
+    "password": "password",
+    "email":"Fajri@email.com",
+    "role":"PARENT"
   },
   {
     "username": "mishal",
-    "password": "password"
+    "password": "password",
+    "email":"mishal@email.com",
+    "role":"PARENT"
   },
   {
     "username": "child1",
-    "password": "password"
+    "password": "password",
+    "email":"child1@email.com",
+    "role":"CHILD"
   },
   {
     "username": "child2",
-    "password": "password"
+    "password": "password",
+    "email":"child2@email.com",
+    "role":"CHILD"
   }
 ]
