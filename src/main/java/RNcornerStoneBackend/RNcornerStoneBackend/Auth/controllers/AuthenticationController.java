@@ -56,18 +56,19 @@ public class AuthenticationController {
                     "status", "success",
                     "message", "Account created."
             ));
-        } else {// otherwise, the required missing field is highlighted to client
+        } else {
             return ResponseEntity.badRequest().body(Map.of(
                     "status", "error",
                     "message", "Error creating Account"
             ));
         }
-
     }
 
 
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> authenticate(@RequestBody LoginUserRequest loginUserDto) {
+
+
         UserEntity authenticatedUser = authenticationService.authenticate(loginUserDto);
 
         String jwtToken = jwtService.generateToken(authenticatedUser);

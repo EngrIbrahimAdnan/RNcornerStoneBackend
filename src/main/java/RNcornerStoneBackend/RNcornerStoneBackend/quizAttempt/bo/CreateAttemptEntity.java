@@ -7,6 +7,7 @@ import jakarta.validation.constraints.PastOrPresent;
 
 
 import java.util.Date;
+import java.util.Objects;
 
 public class CreateAttemptEntity {
 
@@ -54,5 +55,31 @@ public class CreateAttemptEntity {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CreateAttemptEntity that = (CreateAttemptEntity) o;
+        return Objects.equals(childUserEntity, that.childUserEntity) &&
+                Objects.equals(quizQuestionEntity, that.quizQuestionEntity) &&
+                Objects.equals(answer, that.answer) &&
+                Objects.equals(date, that.date);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(childUserEntity, quizQuestionEntity, answer, date);
+    }
+
+
+    @Override
+    public String toString() {
+        return "CreateAttemptEntity{" +
+                "childUserEntity=" + childUserEntity +
+                ", quizQuestionEntity=" + quizQuestionEntity +
+                ", answer=" + answer +
+                ", date=" + date +
+                '}';
     }
 }

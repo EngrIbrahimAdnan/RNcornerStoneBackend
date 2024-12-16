@@ -26,7 +26,6 @@ public class UserServiceImpl implements UserService {
 
         try{
 
-
             UserEntity userEntity = new UserEntity();
             userEntity.setEmail(request.getEmail());
             userEntity.setUsername(request.getUsername());
