@@ -2,7 +2,7 @@ package RNcornerStoneBackend.RNcornerStoneBackend.setup.controller;
 
 import RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.entity.QuizQuestionEntity;
 import RNcornerStoneBackend.RNcornerStoneBackend.setup.service.SetupService;
-import RNcornerStoneBackend.RNcornerStoneBackend.User.entity.UserEntity;
+import RNcornerStoneBackend.RNcornerStoneBackend.user.entity.UserEntity;
 import com.fasterxml.jackson.core.type.TypeReference;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

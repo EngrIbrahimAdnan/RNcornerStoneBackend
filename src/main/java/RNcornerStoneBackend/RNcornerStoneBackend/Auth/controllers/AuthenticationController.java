@@ -2,12 +2,11 @@ package RNcornerStoneBackend.RNcornerStoneBackend.Auth.controllers;
 
 import RNcornerStoneBackend.RNcornerStoneBackend.Auth.services.AuthenticationService;
 import RNcornerStoneBackend.RNcornerStoneBackend.Auth.services.JwtService;
-import RNcornerStoneBackend.RNcornerStoneBackend.User.bo.CreateUserRequest;
-import RNcornerStoneBackend.RNcornerStoneBackend.User.bo.LoginResponse;
-import RNcornerStoneBackend.RNcornerStoneBackend.User.bo.LoginUserRequest;
-import RNcornerStoneBackend.RNcornerStoneBackend.User.bo.UserResponse;
-import RNcornerStoneBackend.RNcornerStoneBackend.User.entity.UserEntity;
-import RNcornerStoneBackend.RNcornerStoneBackend.User.service.UserService;
+import RNcornerStoneBackend.RNcornerStoneBackend.user.bo.CreateUserRequest;
+import RNcornerStoneBackend.RNcornerStoneBackend.user.bo.LoginResponse;
+import RNcornerStoneBackend.RNcornerStoneBackend.user.bo.LoginUserRequest;
+import RNcornerStoneBackend.RNcornerStoneBackend.user.entity.UserEntity;
+import RNcornerStoneBackend.RNcornerStoneBackend.user.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

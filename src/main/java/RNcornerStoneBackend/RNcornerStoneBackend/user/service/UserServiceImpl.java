@@ -1,8 +1,8 @@
-package RNcornerStoneBackend.RNcornerStoneBackend.User.service;
+package RNcornerStoneBackend.RNcornerStoneBackend.user.service;
 
-import RNcornerStoneBackend.RNcornerStoneBackend.User.entity.UserEntity;
-import RNcornerStoneBackend.RNcornerStoneBackend.User.bo.CreateUserRequest;
-import RNcornerStoneBackend.RNcornerStoneBackend.User.repository.UserRepository;
+import RNcornerStoneBackend.RNcornerStoneBackend.user.entity.UserEntity;
+import RNcornerStoneBackend.RNcornerStoneBackend.user.bo.CreateUserRequest;
+import RNcornerStoneBackend.RNcornerStoneBackend.user.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 

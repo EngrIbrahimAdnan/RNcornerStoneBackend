@@ -1,7 +1,6 @@
 package RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.entity;
 
 import RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.enums.Levels;
-import RNcornerStoneBackend.RNcornerStoneBackend.User.entity.UserEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

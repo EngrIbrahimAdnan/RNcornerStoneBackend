@@ -1,8 +1,7 @@
-package RNcornerStoneBackend.RNcornerStoneBackend.User.bo;
+package RNcornerStoneBackend.RNcornerStoneBackend.user.bo;
 
-import RNcornerStoneBackend.RNcornerStoneBackend.User.entity.Role;
 import jakarta.validation.constraints.NotNull;
-
+import RNcornerStoneBackend.RNcornerStoneBackend.user.entity.Role;
 public class CreateUserRequest {
 
     @NotNull(message = "The 'username' field is required and it's missing")

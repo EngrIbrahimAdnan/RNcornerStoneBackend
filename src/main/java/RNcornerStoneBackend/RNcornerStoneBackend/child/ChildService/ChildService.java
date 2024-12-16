@@ -1,8 +1,8 @@
 package RNcornerStoneBackend.RNcornerStoneBackend.child.ChildService;
 
-import RNcornerStoneBackend.RNcornerStoneBackend.User.entity.Role;
-import RNcornerStoneBackend.RNcornerStoneBackend.User.entity.UserEntity;
-import RNcornerStoneBackend.RNcornerStoneBackend.User.repository.UserRepository;
+import RNcornerStoneBackend.RNcornerStoneBackend.user.entity.Role;
+import RNcornerStoneBackend.RNcornerStoneBackend.user.entity.UserEntity;
+import RNcornerStoneBackend.RNcornerStoneBackend.user.repository.UserRepository;
 import RNcornerStoneBackend.RNcornerStoneBackend.child.Repository.ChildRepository;
 import RNcornerStoneBackend.RNcornerStoneBackend.child.bo.AddChildRequest;
 import RNcornerStoneBackend.RNcornerStoneBackend.child.bo.ChildResponse;

@@ -3,18 +3,10 @@ package RNcornerStoneBackend.RNcornerStoneBackend.quizAttempt.service;
 import RNcornerStoneBackend.RNcornerStoneBackend.quizAttempt.bo.CreateAttemptEntity;
 import RNcornerStoneBackend.RNcornerStoneBackend.quizAttempt.entity.AttemptEntity;
 import RNcornerStoneBackend.RNcornerStoneBackend.quizAttempt.repository.AttemptRepository;
-import RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.bo.CreateQuizQuestionEntity;
-import RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.entity.QuizQuestionEntity;
 import RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.service.QuizQuestionService;
-import RNcornerStoneBackend.RNcornerStoneBackend.setup.service.SetupService;
-import RNcornerStoneBackend.RNcornerStoneBackend.User.entity.UserEntity;
-import RNcornerStoneBackend.RNcornerStoneBackend.User.repository.UserRepository;
-import RNcornerStoneBackend.RNcornerStoneBackend.User.service.UserService;
-import com.fasterxml.jackson.core.type.TypeReference;
-import org.springframework.beans.BeanUtils;
+import RNcornerStoneBackend.RNcornerStoneBackend.user.service.UserService;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service

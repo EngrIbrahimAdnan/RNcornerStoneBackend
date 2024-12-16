@@ -1,8 +1,7 @@
 package RNcornerStoneBackend.RNcornerStoneBackend.quizAttempt.entity;
 
 import RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.entity.QuizQuestionEntity;
-import RNcornerStoneBackend.RNcornerStoneBackend.User.entity.UserEntity;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import RNcornerStoneBackend.RNcornerStoneBackend.user.entity.UserEntity;
 import jakarta.persistence.*;
 
 import java.util.Date;

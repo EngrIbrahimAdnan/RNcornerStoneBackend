@@ -1,12 +1,10 @@
 package RNcornerStoneBackend.RNcornerStoneBackend.Auth.services;
 
-import RNcornerStoneBackend.RNcornerStoneBackend.User.bo.CreateUserRequest;
-import RNcornerStoneBackend.RNcornerStoneBackend.User.bo.LoginUserRequest;
-import RNcornerStoneBackend.RNcornerStoneBackend.User.bo.UserResponse;
-import RNcornerStoneBackend.RNcornerStoneBackend.User.entity.Role;
-import RNcornerStoneBackend.RNcornerStoneBackend.User.entity.UserEntity;
-import RNcornerStoneBackend.RNcornerStoneBackend.User.repository.UserRepository;
-import RNcornerStoneBackend.RNcornerStoneBackend.User.service.UserService;
+import RNcornerStoneBackend.RNcornerStoneBackend.user.bo.CreateUserRequest;
+import RNcornerStoneBackend.RNcornerStoneBackend.user.bo.LoginUserRequest;
+import RNcornerStoneBackend.RNcornerStoneBackend.user.entity.UserEntity;
+import RNcornerStoneBackend.RNcornerStoneBackend.user.repository.UserRepository;
+import RNcornerStoneBackend.RNcornerStoneBackend.user.service.UserService;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

@@ -1,6 +1,6 @@
 package RNcornerStoneBackend.RNcornerStoneBackend.Chore.Entity;
 
-import RNcornerStoneBackend.RNcornerStoneBackend.User.entity.UserEntity;
+import RNcornerStoneBackend.RNcornerStoneBackend.user.entity.UserEntity;
 import jakarta.persistence.*;
 
 import java.util.Date;
