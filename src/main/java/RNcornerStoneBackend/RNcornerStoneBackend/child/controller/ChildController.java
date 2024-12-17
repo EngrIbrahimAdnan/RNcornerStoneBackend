@@ -15,8 +15,15 @@ public class ChildController {
         this.childService = childService;
     }
 
-    @PostMapping("/parent/{parentId}")
-    public ResponseEntity<ChildResponse> addChild(@PathVariable Long parentId, @RequestBody AddChildRequest request) {
-        return ResponseEntity.ok(childService.addChild(parentId, request));
+//    @PostMapping("/parent/{parentId}")
+//    public ResponseEntity<ChildResponse> addChild(@PathVariable Long parentId, @RequestBody AddChildRequest request) {
+//        return ResponseEntity.ok(childService.addChild(parentId, request));
+//    }
+
+    @PostMapping("/parent")
+    public ResponseEntity<ChildResponse> addChild(@RequestBody AddChildRequest request) {
+        // Call the service method that handles the logic for adding a child
+        return ResponseEntity.ok(childService.addChild(request));
     }
+
 }
