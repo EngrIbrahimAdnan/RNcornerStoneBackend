@@ -1,4 +1,6 @@
 package RNcornerStoneBackend.RNcornerStoneBackend.Auth.services;
+
+import RNcornerStoneBackend.RNcornerStoneBackend.user.entity.UserEntity;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -9,7 +11,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,10 @@ public class JwtService {
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
+    }
+
+    public String extractRole(String token) {
+        return extractClaim(token, claims -> claims.get("role", String.class));  // Extract the 'role' claim
     }
 
     public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
@@ -48,6 +53,10 @@ public class JwtService {
             UserDetails userDetails,
             long expiration
     ) {
+        // Get the user's role and add it to the claims
+        String role = ((UserEntity) userDetails).getRole().name(); // Assuming userDetails is of type UserEntity
+        extraClaims.put("role", role);
+
         return Jwts
                 .builder()
                 .setClaims(extraClaims)

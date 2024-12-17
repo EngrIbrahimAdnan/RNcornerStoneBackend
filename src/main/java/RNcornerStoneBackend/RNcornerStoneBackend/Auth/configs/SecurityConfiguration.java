@@ -48,15 +48,21 @@ public class SecurityConfiguration {
 
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration configuration = new CorsConfiguration();
+        CorsConfiguration corsConfig = new CorsConfiguration();
 
-        configuration.setAllowedOrigins(List.of("http://localhost:8005")); // frontend server running locally
-        configuration.setAllowedMethods(List.of("GET","POST"));// add other methods (like DEL) if necessary to allow
-        configuration.setAllowedHeaders(List.of("Authorization","Content-Type"));
+//        configuration.setAllowedOrigins(List.of("http://localhost:8005")); // frontend server running locally
+//        configuration.setAllowedMethods(List.of("GET","POST"));// add other methods (like DEL) if necessary to allow
+//        configuration.setAllowedHeaders(List.of("Authorization","Content-Type"));
+
+
+        corsConfig.addAllowedOrigin("*"); // Add your frontend URL
+        corsConfig.addAllowedMethod("*"); // Allow all methods (GET, POST, PUT, DELETE)
+        corsConfig.addAllowedHeader("Authorization"); // Allow Authorization header
+        corsConfig.addAllowedHeader("Content-Type"); // Allow Content-Type header
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 
-        source.registerCorsConfiguration("/**",configuration);
+        source.registerCorsConfiguration("/**",corsConfig);
 
         return source;
     }
