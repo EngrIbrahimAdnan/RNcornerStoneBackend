@@ -1,5 +1,6 @@
 package RNcornerStoneBackend.RNcornerStoneBackend.user.bo;
 
+import RNcornerStoneBackend.RNcornerStoneBackend.user.entity.UserEntity;
 import jakarta.validation.constraints.NotNull;
 import RNcornerStoneBackend.RNcornerStoneBackend.user.entity.Role;
 public class CreateUserRequest {
@@ -14,6 +15,25 @@ public class CreateUserRequest {
     private String email;
 
     private Role role;
+
+    private String avatarUrl;
+    private String token;
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
+    }
 
     public Role getRole() {
         return role;
@@ -45,5 +65,15 @@ public class CreateUserRequest {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public UserEntity toUserEntity() {
+        UserEntity userEntity = new UserEntity();
+        userEntity.setUsername(this.username);
+        userEntity.setPassword(this.password); // Ensure password is already encoded
+        userEntity.setEmail(this.email);
+        userEntity.setRole(this.role);
+        userEntity.setAvatarUrl(this.avatarUrl);
+        return userEntity;
     }
 }

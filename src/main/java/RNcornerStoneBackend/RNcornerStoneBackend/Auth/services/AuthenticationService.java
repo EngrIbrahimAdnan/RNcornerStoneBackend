@@ -1,5 +1,6 @@
 package RNcornerStoneBackend.RNcornerStoneBackend.Auth.services;
 
+import RNcornerStoneBackend.RNcornerStoneBackend.setup.service.SetupService;
 import RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.bo.CreateQuizQuestionEntity;
 import RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.service.QuizQuestionService;
 import RNcornerStoneBackend.RNcornerStoneBackend.Auth.data.DataLoader;
@@ -23,17 +24,31 @@ public class AuthenticationService {
     private final UserService userService;
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
+    private JwtService jwtService;
+
+    private final UserRepository userRepository;
+    private final SetupService setupService;
+
     private final QuizQuestionService quizQuestionService;
 
     public AuthenticationService(
             UserService userService,
             AuthenticationManager authenticationManager,
             PasswordEncoder passwordEncoder,
+            UserRepository userRepository,
+            SetupService setupService, JwtService jwtService
             QuizQuestionService quizQuestionService
     ) {
         this.authenticationManager = authenticationManager;
         this.userService = userService;
         this.passwordEncoder = passwordEncoder;
+        this.userRepository = userRepository;
+        this.setupService = setupService;
+        this.jwtService = jwtService;
+    }
+
+
+    public CreateUserRequest signup(CreateUserRequest input) {
         this.quizQuestionService = quizQuestionService;
     }
 
@@ -46,12 +61,23 @@ public class AuthenticationService {
         newRequest.setPassword(passwordEncoder.encode(input.getPassword()));
         newRequest.setEmail(input.getEmail());
         newRequest.setRole(Role.PARENT);
-        return userService.CreateUserAccount(newRequest);
+        newRequest.setAvatarUrl(input.getAvatarUrl());
 
+        // Save the user to the database
+        UserEntity savedUser = userRepository.save(newRequest.toUserEntity());
+
+        // Generate JWT token
+        String jwtToken = jwtService.generateToken(savedUser);
+        newRequest.setToken(jwtToken);
+        return userService.CreateUserAccount(newRequest);
+        return newRequest;
     }
 
 
     public UserEntity authenticate(LoginUserRequest input) {
+
+        System.out.println("Username: " + input.getUsername());
+        System.out.println("Password: " + input.getPassword());
 
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
