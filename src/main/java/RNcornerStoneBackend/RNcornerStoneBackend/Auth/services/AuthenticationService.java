@@ -92,7 +92,9 @@ public class AuthenticationService {
         return userRepository.findById(id);
     }
 
-
+    public List<UserEntity> getAllUsers() {
+        return userRepository.findAll();
+    }
     public <T> String addEntitiesToDatabaseFromFile(
             String file,
             TypeReference<List<T>> typeReference

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RequestMapping("/auth")
 @RestController
@@ -53,6 +54,26 @@ public class AuthenticationController {
         loginResponse.setExpiresIn(jwtService.getExpirationTime());
 
         return ResponseEntity.ok(loginResponse);
+    }
+
+    @GetMapping("/users")
+    public ResponseEntity<List<UserResponse>> getAllUsers() {
+        List<UserEntity> users = authenticationService.getAllUsers();
+        List<UserResponse> userResponses = users.stream()
+                .map(this::convertToUserResponse)
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(userResponses);
+    }
+
+    private UserResponse convertToUserResponse(UserEntity user) {
+        UserResponse response = new UserResponse();
+        response.setId(user.getId());
+        response.setUsername(user.getUsername());
+        response.setEmail(user.getEmail());
+        response.setRole(user.getRole());
+        response.setAvatarUrl(user.getAvatarUrl());
+        // Set other fields as needed, but avoid sending sensitive information like passwords
+        return response;
     }
 
     @GetMapping("/user/{id}")
