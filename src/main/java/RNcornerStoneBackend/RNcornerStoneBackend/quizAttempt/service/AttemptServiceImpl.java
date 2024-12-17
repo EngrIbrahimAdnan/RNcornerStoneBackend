@@ -59,21 +59,19 @@ public class AttemptServiceImpl implements AttemptService {
 
 
         if (type.equals("user")) {
-//            LoginUserRequest loginRequest = new LoginUserRequest();
-//            loginRequest.setUsername(request.getChildUserEntity().getUsername());
-//            loginRequest.setPassword(request.getChildUserEntity().getPassword());
-//
-//          UserEntity entity = authenticationService.authenticate(loginRequest);
-            entity = userService.getUserById(request.getChildUserEntity().getId());
+            LoginUserRequest loginRequest = new LoginUserRequest();
+            loginRequest.setUsername(request.getChildUserEntity().getUsername());
+            loginRequest.setPassword(request.getChildUserEntity().getPassword());
 
-
-            // Check if the entity exists in the database
-            if (entity.isEmpty()) {
-                return false;
-            }
-
-            if (!entity.get().equals(request.getChildUserEntity())) {
-                return false;
+            try {
+                UserEntity authenticated = authenticationService.authenticate(loginRequest);
+                if (!authenticated.getRole().equals(request.getChildUserEntity().getRole()) ||
+                        !authenticated.getId().equals(request.getChildUserEntity().getId()) ||
+                        !authenticated.getEmail().equals(request.getChildUserEntity().getEmail())) {
+                    return false;
+                }
+            } catch (Exception e) {
+                throw new RuntimeException(e);
             }
 
         } else if (type.equals("question")) {

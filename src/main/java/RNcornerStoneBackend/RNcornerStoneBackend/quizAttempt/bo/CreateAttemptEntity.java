@@ -71,15 +71,4 @@ public class CreateAttemptEntity {
     public int hashCode() {
         return Objects.hash(childUserEntity, quizQuestionEntity, answer, date);
     }
-
-
-    @Override
-    public String toString() {
-        return "CreateAttemptEntity{" +
-                "childUserEntity=" + childUserEntity +
-                ", quizQuestionEntity=" + quizQuestionEntity +
-                ", answer=" + answer +
-                ", date=" + date +
-                '}';
-    }
 }
