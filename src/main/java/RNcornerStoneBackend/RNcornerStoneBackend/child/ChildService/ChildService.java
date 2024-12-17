@@ -22,7 +22,9 @@ public class ChildService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public ChildService(ChildRepository childRepository, UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public ChildService(ChildRepository childRepository, UserRepository userRepository,  PasswordEncoder passwordEncoder
+) {
+
         this.childRepository = childRepository;
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
