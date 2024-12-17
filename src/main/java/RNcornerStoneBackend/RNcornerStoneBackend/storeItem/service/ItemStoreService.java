@@ -8,5 +8,4 @@ import org.springframework.stereotype.Service;
 public interface ItemStoreService {
     String addStoreItem(CreateStoreItemEntity request);
     String buyStoreItem(BuyStoreItemEntity request);
-
 }
