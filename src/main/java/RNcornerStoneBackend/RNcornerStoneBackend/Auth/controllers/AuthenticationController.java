@@ -100,47 +100,45 @@ public class AuthenticationController {
 
 
     // Populates the database with quiz questions
-//    @PostMapping("/setup/loadBankQuizQuestions")
-//    public ResponseEntity<Map<String, Object>> loadQuestions() {
-//
-//        // returns null only if everything is successful, otherwise it returns the string stating the issue found
-//        String requestStatus = authenticationService.addEntitiesToDatabaseFromFile("quiz_questions_bank.json", new TypeReference<List<QuizQuestionEntity>>() {
-//        });
-//
-//        if (requestStatus == null) {
-//            return ResponseEntity.status(HttpStatus.CREATED).body(Map.of(
-//                    "status", "success",
-//                    "message", "All Quiz Questions have been added to database."
-//            ));
-//        } else {// otherwise, the required missing field is highlighted to client
-//            return ResponseEntity.badRequest().body(Map.of(
-//                    "status", "error",
-//                    "message", requestStatus
-//            ));
-//        }
-//    }
-//
-//    // Populates the database with users questions
-//    @PostMapping("/setup/loadUsers")
-//    public ResponseEntity<Map<String, Object>> loadUsers() {
-//
-//        // returns null only if everything is successful, otherwise it returns the string stating the issue found
-//        String requestStatus = authenticationService.addEntitiesToDatabaseFromFile("users.json", new TypeReference<List<UserEntity>>() {
-//        });
-//
-//        if (requestStatus == null) {
-//            return ResponseEntity.status(HttpStatus.CREATED).body(Map.of(
-//                    "status", "success",
-//                    "message", "All users have been added to database."
-//            ));
-//        } else {// otherwise, the required missing field is highlighted to client
-//            return ResponseEntity.badRequest().body(Map.of(
-//                    "status", "error",
-//                    "message", requestStatus
-//            ));
-//        }
-//    }
+    @PostMapping("/setup/loadBankQuizQuestions")
+    public ResponseEntity<Map<String, Object>> loadQuestions() {
 
+        // returns null only if everything is successful, otherwise it returns the string stating the issue found
+        String requestStatus = authenticationService.addEntitiesToDatabaseFromFile("quiz_questions_bank.json", new TypeReference<List<QuizQuestionEntity>>() {
+        });
 
+        if (requestStatus == null) {
+            return ResponseEntity.status(HttpStatus.CREATED).body(Map.of(
+                    "status", "success",
+                    "message", "All Quiz Questions have been added to database."
+            ));
+        } else {// otherwise, the required missing field is highlighted to client
+            return ResponseEntity.badRequest().body(Map.of(
+                    "status", "error",
+                    "message", requestStatus
+            ));
+        }
+    }
+
+    // Populates the database with users questions
+    @PostMapping("/setup/loadUsers")
+    public ResponseEntity<Map<String, Object>> loadUsers() {
+
+        // returns null only if everything is successful, otherwise it returns the string stating the issue found
+        String requestStatus = authenticationService.addEntitiesToDatabaseFromFile("users.json", new TypeReference<List<UserEntity>>() {
+        });
+
+        if (requestStatus == null) {
+            return ResponseEntity.status(HttpStatus.CREATED).body(Map.of(
+                    "status", "success",
+                    "message", "All users have been added to database."
+            ));
+        } else {// otherwise, the required missing field is highlighted to client
+            return ResponseEntity.badRequest().body(Map.of(
+                    "status", "error",
+                    "message", requestStatus
+            ));
+        }
+    }
 }
 
