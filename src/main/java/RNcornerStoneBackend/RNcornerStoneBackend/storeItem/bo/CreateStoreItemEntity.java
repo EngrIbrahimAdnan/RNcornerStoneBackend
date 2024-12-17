@@ -1,11 +1,6 @@
 package RNcornerStoneBackend.RNcornerStoneBackend.storeItem.bo;
 
-import RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.entity.QuizQuestionEntity;
-import RNcornerStoneBackend.RNcornerStoneBackend.user.entity.UserEntity;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.PastOrPresent;
-
-import java.util.Date;
 
 public class CreateStoreItemEntity {
 
@@ -16,20 +11,13 @@ public class CreateStoreItemEntity {
     private String description;
 
     @NotNull(message = "The 'price' field is required and it's missing")
-    private Integer price;
+    private Double price;
 
     @NotNull(message = "The 'image' Url String field is required and it's missing")
     private String image;
 
-    @NotNull(message = "The 'parentUserEntity' Url String field is required and it's missing")
-    private UserEntity parentUserEntity;
-
-    @NotNull(message = "The 'childUserEntity' Url String field is required and it's missing")
-    private UserEntity childUserEntity;
-
-    @NotNull(message = "The 'date' field is required and it's missing")
-    @PastOrPresent(message = "The 'date' must be in the present or past")
-    private Date date;
+    @NotNull(message = "The 'child_id' String field is required and it's missing")
+    private Long child_id;
 
     public String getName() {
         return name;
@@ -47,11 +35,11 @@ public class CreateStoreItemEntity {
         this.description = description;
     }
 
-    public Integer getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
@@ -63,28 +51,11 @@ public class CreateStoreItemEntity {
         this.image = image;
     }
 
-    public UserEntity getParentUserEntity() {
-        return parentUserEntity;
+    public Long getChild_id() {
+        return child_id;
     }
 
-    public void setParentUserEntity(UserEntity parentUserEntity) {
-        this.parentUserEntity = parentUserEntity;
+    public void setChild_id(Long child_id) {
+        this.child_id = child_id;
     }
-
-    public UserEntity getChildUserEntity() {
-        return childUserEntity;
-    }
-
-    public void setChildUserEntity(UserEntity childUserEntity) {
-        this.childUserEntity = childUserEntity;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
 }

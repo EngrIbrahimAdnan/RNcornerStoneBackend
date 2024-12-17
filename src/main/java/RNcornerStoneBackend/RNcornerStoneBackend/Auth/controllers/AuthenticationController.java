@@ -60,7 +60,7 @@ public class AuthenticationController {
         } else {
             return ResponseEntity.badRequest().body(Map.of(
                     "status", "error",
-                    "message", "Error creating Account"
+                    "message", requestStatus
             ));
         }
     }
