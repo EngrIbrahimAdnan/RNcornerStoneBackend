@@ -17,26 +17,56 @@ public class ChoreController {
         this.choreService = choreService;
     }
 
-    @PostMapping("/{parentId}/{childId}")
+//    @PostMapping("/{parentId}/{childId}")
+//    public ResponseEntity<ChoreResponse> createChore(
+//            @PathVariable Long parentId,
+//            @PathVariable Long childId,
+//            @RequestBody ChoreResponse choreResponse) {
+//        try {
+//            ChoreResponse createdChore = choreService.createChore(parentId, childId, choreResponse);
+//            return ResponseEntity.ok(createdChore);
+//        } catch (RuntimeException e) {
+//            return ResponseEntity.badRequest().body(null);
+//        }
+//    }
+
+    @PostMapping("/{childId}")
     public ResponseEntity<ChoreResponse> createChore(
-            @PathVariable Long parentId,
             @PathVariable Long childId,
             @RequestBody ChoreResponse choreResponse) {
         try {
-            ChoreResponse createdChore = choreService.createChore(parentId, childId, choreResponse);
+            // Call the service to create the chore for the authenticated parent and the specified child
+            ChoreResponse createdChore = choreService.createChore(childId, choreResponse);
             return ResponseEntity.ok(createdChore);
         } catch (RuntimeException e) {
+            // Return a bad request response in case of any exception
             return ResponseEntity.badRequest().body(null);
         }
     }
 
-    @PutMapping("/{choreId}/status")
+//    @PutMapping("/{choreId}/status")
+//    public ResponseEntity<ChoreResponse> updateChoreStatus(
+//            @PathVariable Long choreId,
+//            @RequestParam Long parentId,
+//            @RequestBody ChoreResponse choreResponse) {
+//        try {
+//            ChoreResponse updatedChore = choreService.updateChoreStatus(choreId, parentId, choreResponse.getStatus());
+//            return ResponseEntity.ok(updatedChore);
+//        } catch (EntityNotFoundException e) {
+//            return ResponseEntity.notFound().build();
+//        } catch (IllegalArgumentException e) {
+//            return ResponseEntity.badRequest().body(null);
+//        }
+//    }
+
+
+    @PutMapping("/status/{choreId}")
     public ResponseEntity<ChoreResponse> updateChoreStatus(
             @PathVariable Long choreId,
-            @RequestParam Long parentId,
             @RequestBody ChoreResponse choreResponse) {
         try {
-            ChoreResponse updatedChore = choreService.updateChoreStatus(choreId, parentId, choreResponse.getStatus());
+            // Call the service to update the chore status for the authenticated parent
+            ChoreResponse updatedChore = choreService.updateChoreStatus(choreId, choreResponse.getStatus());
             return ResponseEntity.ok(updatedChore);
         } catch (EntityNotFoundException e) {
             return ResponseEntity.notFound().build();
@@ -44,4 +74,7 @@ public class ChoreController {
             return ResponseEntity.badRequest().body(null);
         }
     }
+
+
+
 }
