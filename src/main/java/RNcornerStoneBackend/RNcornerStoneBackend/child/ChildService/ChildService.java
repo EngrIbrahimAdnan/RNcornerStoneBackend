@@ -9,16 +9,21 @@ import RNcornerStoneBackend.RNcornerStoneBackend.child.bo.ChildResponse;
 import RNcornerStoneBackend.RNcornerStoneBackend.child.entity.ChildEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
 
 @Service
 public class ChildService {
     private final ChildRepository childRepository;
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public ChildService(ChildRepository childRepository, UserRepository userRepository) {
+    public ChildService(ChildRepository childRepository, UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.childRepository = childRepository;
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
 
@@ -85,7 +90,7 @@ public class ChildService {
         childUser.setUsername(request.getUsername());
         childUser.setEmail(request.getEmail());
         childUser.setRole(Role.CHILD);
-        childUser.setPassword(request.getPassword());
+        childUser.setPassword(passwordEncoder.encode(request.getPassword()));
 
         // Save the child user entity
         UserEntity savedChildUser = userRepository.save(childUser);

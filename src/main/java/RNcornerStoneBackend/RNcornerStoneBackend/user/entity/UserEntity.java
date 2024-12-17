@@ -31,6 +31,9 @@ public class UserEntity implements UserDetails {
     @Column(nullable = true)
     private Role role;
 
+    @Column(nullable = true)
+    private String avatarUrl;
+
     @OneToMany(mappedBy = "parent", orphanRemoval = true, fetch = FetchType.EAGER)
     @JsonIgnoreProperties(value = {"parent"})
     private List<ChildEntity> children;
@@ -53,6 +56,14 @@ public class UserEntity implements UserDetails {
 
     public void setChores(List<ChoreEntity> chores) {
         this.chores = chores;
+    }
+
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
     }
 
     public Role getRole() {
