@@ -14,6 +14,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 
+import java.util.Optional;
+
 @Service
 public class ChildService {
     private final ChildRepository childRepository;
@@ -120,4 +122,7 @@ public class ChildService {
     }
 
 
+    public Optional<ChildEntity> getChildEntityById(Long id){
+        return childRepository.findById(id);
+    }
 }

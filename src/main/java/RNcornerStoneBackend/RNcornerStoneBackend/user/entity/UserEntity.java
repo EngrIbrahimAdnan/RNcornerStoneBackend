@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 
 @Entity
@@ -128,4 +129,22 @@ public class UserEntity implements UserDetails {
     public void setId(Long id) {
         this.id = id;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true; // Check if the references are the same
+        if (o == null || getClass() != o.getClass()) return false; // Ensure type compatibility
+        UserEntity that = (UserEntity) o;
+        return Objects.equals(id, that.id) && // Compare IDs
+                Objects.equals(email, that.email) && // Compare email
+                Objects.equals(username, that.username) && // Compare username
+                Objects.equals(password, that.password) && // Compare password
+                role == that.role; // Compare role (enums are compared using `==`)
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, email, username, password, role); // Generate a hash code using all fields
+    }
+
 }
