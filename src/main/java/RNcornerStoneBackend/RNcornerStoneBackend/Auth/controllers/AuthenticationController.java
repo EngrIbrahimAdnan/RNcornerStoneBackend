@@ -39,6 +39,7 @@ public class AuthenticationController {
     public ResponseEntity<CreateUserRequest> register(@RequestBody CreateUserRequest registerUserDto) {
         CreateUserRequest userResponse = authenticationService.signup(registerUserDto);
         return ResponseEntity.ok(userResponse);
+    }
 
 
 
