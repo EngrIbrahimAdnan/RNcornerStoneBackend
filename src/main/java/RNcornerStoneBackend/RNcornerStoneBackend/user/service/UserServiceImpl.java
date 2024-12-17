@@ -1,5 +1,6 @@
 package RNcornerStoneBackend.RNcornerStoneBackend.user.service;
 
+import RNcornerStoneBackend.RNcornerStoneBackend.user.entity.Role;
 import RNcornerStoneBackend.RNcornerStoneBackend.user.entity.UserEntity;
 import RNcornerStoneBackend.RNcornerStoneBackend.user.bo.CreateUserRequest;
 import RNcornerStoneBackend.RNcornerStoneBackend.user.repository.UserRepository;
@@ -30,7 +31,7 @@ public class UserServiceImpl implements UserService {
             userEntity.setEmail(request.getEmail());
             userEntity.setUsername(request.getUsername());
             userEntity.setPassword(request.getPassword());
-            userEntity.setRole(request.getRole());
+            userEntity.setRole(Role.PARENT);
             userRepository.save(userEntity);
 
         } catch (Exception e) {

@@ -28,7 +28,8 @@ public class UserEntity implements UserDetails {
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = true)
     private Role role;
 
     @OneToMany(mappedBy = "parent", orphanRemoval = true, fetch = FetchType.EAGER)

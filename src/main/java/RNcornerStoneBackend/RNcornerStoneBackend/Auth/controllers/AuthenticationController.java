@@ -51,6 +51,7 @@ public class AuthenticationController {
         }
 
         String requestStatus = authenticationService.signUp(request);
+
         if (requestStatus == null) {
             return ResponseEntity.status(HttpStatus.CREATED).body(Map.of(
                     "status", "success",

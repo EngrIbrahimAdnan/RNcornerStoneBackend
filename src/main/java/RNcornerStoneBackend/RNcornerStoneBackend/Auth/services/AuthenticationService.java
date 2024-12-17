@@ -5,6 +5,7 @@ import RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.service.QuizQuesti
 import RNcornerStoneBackend.RNcornerStoneBackend.Auth.data.DataLoader;
 import RNcornerStoneBackend.RNcornerStoneBackend.user.bo.CreateUserRequest;
 import RNcornerStoneBackend.RNcornerStoneBackend.user.bo.LoginUserRequest;
+import RNcornerStoneBackend.RNcornerStoneBackend.user.entity.Role;
 import RNcornerStoneBackend.RNcornerStoneBackend.user.entity.UserEntity;
 import RNcornerStoneBackend.RNcornerStoneBackend.user.service.UserService;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -36,6 +37,7 @@ public class AuthenticationService {
         this.quizQuestionService = quizQuestionService;
     }
 
+
     public String signUp(CreateUserRequest input) {
 
         try{
@@ -45,6 +47,7 @@ public class AuthenticationService {
             newRequest.setEmail(input.getEmail());
             newRequest.setRole(input.getRole());
             return userService.CreateUserAccount(newRequest);
+
 
         } catch (Exception e) {
             return null;
