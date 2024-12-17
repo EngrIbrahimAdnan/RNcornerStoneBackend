@@ -5,7 +5,6 @@ import RNcornerStoneBackend.RNcornerStoneBackend.user.entity.UserEntity;
 import RNcornerStoneBackend.RNcornerStoneBackend.user.bo.CreateUserRequest;
 import RNcornerStoneBackend.RNcornerStoneBackend.user.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -27,6 +26,7 @@ public class UserServiceImpl implements UserService {
         }
 
         try{
+
             UserEntity userEntity = new UserEntity();
             userEntity.setEmail(request.getEmail());
             userEntity.setUsername(request.getUsername());

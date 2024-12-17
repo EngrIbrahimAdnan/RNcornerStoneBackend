@@ -1,7 +1,8 @@
-package RNcornerStoneBackend.RNcornerStoneBackend.quizAttempt.controller;
+package RNcornerStoneBackend.RNcornerStoneBackend.storeItem.controller;
 
-import RNcornerStoneBackend.RNcornerStoneBackend.quizAttempt.bo.CreateAttemptEntity;
-import RNcornerStoneBackend.RNcornerStoneBackend.quizAttempt.service.AttemptService;
+import RNcornerStoneBackend.RNcornerStoneBackend.storeItem.bo.CreateStoreItemEntity;
+import RNcornerStoneBackend.RNcornerStoneBackend.storeItem.service.ItemStoreService;
+import RNcornerStoneBackend.RNcornerStoneBackend.user.bo.CreateUserRequest;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,17 +16,17 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+@RequestMapping("/store")
 @RestController
-@RequestMapping("/attempt")
-public class AttemptController {
-    private final AttemptService attemptService;
-
-    public AttemptController(AttemptService attemptService) {
-        this.attemptService = attemptService;
-    }
+public class StoreItemController {
+//    private final ItemStoreService itemStoreService;
+//
+//    public StoreItemController(ItemStoreService itemStoreService) {
+//        this.itemStoreService = itemStoreService;
+//    }
 
     @PostMapping("/add")
-    public ResponseEntity<Map<String, Object>> quizAttempt(@Valid @RequestBody CreateAttemptEntity request, BindingResult bindingResult) {
+    public ResponseEntity<Map<String, Object>> addStoreItem(@Valid @RequestBody CreateStoreItemEntity request, BindingResult bindingResult) {
 
         // If there are validation errors, return them
         if (bindingResult.hasErrors()) {
@@ -40,18 +41,19 @@ public class AttemptController {
             ));
         }
 
-        String requestStatus = attemptService.addAttempt(request);
-
-        if (requestStatus==null) {
+        String requestStatus = null;
+        if (requestStatus == null) {
             return ResponseEntity.status(HttpStatus.CREATED).body(Map.of(
                     "status", "success",
-                    "message", "The Attempt has been added to database."
+                    "message", "Yay."
             ));
-        } else {// otherwise, the required missing field is highlighted to client
+        } else {
             return ResponseEntity.badRequest().body(Map.of(
                     "status", "error",
-                    "message", requestStatus
+                    "message", "Error creating Account"
             ));
         }
     }
+
+
 }
