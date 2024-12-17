@@ -41,6 +41,7 @@ public class AuthenticationService {
     public String signUp(CreateUserRequest input) {
 
 
+        
         CreateUserRequest newRequest = new CreateUserRequest();
         newRequest.setUsername(input.getUsername());
         newRequest.setPassword(passwordEncoder.encode(input.getPassword()));
