@@ -12,13 +12,11 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @RequestMapping("/auth")
 @RestController
@@ -56,6 +54,28 @@ public class AuthenticationController {
 
         return ResponseEntity.ok(loginResponse);
     }
+
+    @GetMapping("/user/{id}")
+    public ResponseEntity<UserResponse> getUserById(@PathVariable Long id) {
+        Optional<UserEntity> userOptional = authenticationService.getUserById(id);
+
+        if (userOptional.isPresent()) {
+            UserEntity user = userOptional.get();
+            UserResponse userResponse = new UserResponse(); // Create a DTO for user response
+            // Populate userResponse with user data
+            userResponse.setId(user.getId());
+            userResponse.setUsername(user.getUsername());
+            userResponse.setEmail(user.getEmail());
+            userResponse.setRole(user.getRole());
+            userResponse.setAvatarUrl(user.getAvatarUrl());
+            // Set other fields as needed, but avoid sending sensitive information like passwords
+
+            return ResponseEntity.ok(userResponse);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 
 
     // Populates the database with quiz questions
