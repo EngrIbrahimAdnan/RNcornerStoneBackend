@@ -55,7 +55,7 @@ public class SecurityConfiguration {
 //        configuration.setAllowedHeaders(List.of("Authorization","Content-Type"));
 
 
-        corsConfig.addAllowedOrigin("http://localhost:8005"); // Add your frontend URL
+        corsConfig.addAllowedOrigin("*"); // Add your frontend URL
         corsConfig.addAllowedMethod("*"); // Allow all methods (GET, POST, PUT, DELETE)
         corsConfig.addAllowedHeader("Authorization"); // Allow Authorization header
         corsConfig.addAllowedHeader("Content-Type"); // Allow Content-Type header
