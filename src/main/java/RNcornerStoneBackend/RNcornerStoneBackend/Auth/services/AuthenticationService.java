@@ -40,21 +40,15 @@ public class AuthenticationService {
 
     public String signUp(CreateUserRequest input) {
 
-        try{
-            CreateUserRequest newRequest = new CreateUserRequest();
-            newRequest.setUsername(input.getUsername());
-            newRequest.setPassword(passwordEncoder.encode(input.getPassword()));
-            newRequest.setEmail(input.getEmail());
-            newRequest.setRole(input.getRole());
-            return userService.CreateUserAccount(newRequest);
 
+        CreateUserRequest newRequest = new CreateUserRequest();
+        newRequest.setUsername(input.getUsername());
+        newRequest.setPassword(passwordEncoder.encode(input.getPassword()));
+        newRequest.setEmail(input.getEmail());
+        newRequest.setRole(Role.PARENT);
+        return userService.CreateUserAccount(newRequest);
 
-        } catch (Exception e) {
-            return null;
-        }
     }
-
-
 
 
     public UserEntity authenticate(LoginUserRequest input) {
