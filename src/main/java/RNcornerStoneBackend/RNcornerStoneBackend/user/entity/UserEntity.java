@@ -1,17 +1,25 @@
 package RNcornerStoneBackend.RNcornerStoneBackend.user.entity;
 
-import RNcornerStoneBackend.RNcornerStoneBackend.Chore.Entity.ChoreEntity;
-import RNcornerStoneBackend.RNcornerStoneBackend.child.entity.ChildEntity;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import jakarta.persistence.*;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
-
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import RNcornerStoneBackend.RNcornerStoneBackend.Chore.Entity.ChoreEntity;
+import RNcornerStoneBackend.RNcornerStoneBackend.child.entity.ChildEntity;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class UserEntity implements UserDetails {
@@ -19,7 +27,7 @@ public class UserEntity implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true, length = 100, nullable = false)
+    @Column(unique = true, length = 100, nullable = true)
     private String email;
 
     @Column(unique = true, length = 100, nullable = false)
@@ -36,11 +44,11 @@ public class UserEntity implements UserDetails {
     private String avatarUrl;
 
     @OneToMany(mappedBy = "parent", orphanRemoval = true, fetch = FetchType.EAGER)
-    @JsonIgnoreProperties(value = {"parent"})
+    @JsonIgnoreProperties(value = { "parent" })
     private List<ChildEntity> children;
 
     @OneToMany(mappedBy = "parent", orphanRemoval = true, fetch = FetchType.EAGER)
-    @JsonIgnoreProperties(value = {"parent"})
+    @JsonIgnoreProperties(value = { "parent" })
     private List<ChoreEntity> chores;
 
     public List<ChildEntity> getChildren() {
@@ -79,7 +87,9 @@ public class UserEntity implements UserDetails {
         return username;
     }
 
-    public String getEmail() {return email;}
+    public String getEmail() {
+        return email;
+    }
 
     public void setEmail(String email) {
         this.email = email;
@@ -132,8 +142,10 @@ public class UserEntity implements UserDetails {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true; // Check if the references are the same
-        if (o == null || getClass() != o.getClass()) return false; // Ensure type compatibility
+        if (this == o)
+            return true; // Check if the references are the same
+        if (o == null || getClass() != o.getClass())
+            return false; // Ensure type compatibility
         UserEntity that = (UserEntity) o;
         return Objects.equals(id, that.id) && // Compare IDs
                 Objects.equals(email, that.email) && // Compare email
