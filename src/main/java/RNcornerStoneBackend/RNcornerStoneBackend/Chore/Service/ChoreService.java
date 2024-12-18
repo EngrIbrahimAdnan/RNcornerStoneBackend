@@ -151,25 +151,40 @@ public class ChoreService {
     public ChoreResponse updateChoreStatus(Long choreId, Status newStatus) {
         // Get the current authenticated user from the SecurityContext
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        UserEntity parent = (UserEntity) authentication.getPrincipal(); // Assumes the principal is of type UserEntity
-
-        // Ensure the authenticated user is a parent
-        if (parent.getRole() != Role.PARENT) {
-            throw new RuntimeException("Only parents can update chore status");
-        }
+        UserEntity user = (UserEntity) authentication.getPrincipal();
 
         // Find the chore by ID
         ChoreEntity chore = choreRepository.findById(choreId)
                 .orElseThrow(() -> new EntityNotFoundException("Chore not found"));
 
-        // Ensure the chore belongs to the authenticated parent
-        if (!chore.getParent().getId().equals(parent.getId())) {
-            throw new IllegalArgumentException("Only the assigned parent can update the chore status");
+        // Check permissions based on role
+        if (user.getRole() == Role.PARENT) {
+            // For parents, ensure they own the chore
+            if (!chore.getParent().getId().equals(user.getId())) {
+                throw new IllegalArgumentException("Only the assigned parent can update the chore status");
+            }
+        } else if (user.getRole() == Role.CHILD) {
+            // For children, ensure the chore belongs to them
+            ChildEntity child = childRepository.findByUser(user)
+                    .orElseThrow(() -> new EntityNotFoundException("Child not found"));
+            if (!chore.getChild().getId().equals(child.getId())) {
+                throw new IllegalArgumentException("You can only update your own chores");
+            }
+        } else {
+            throw new RuntimeException("Invalid user role");
         }
 
         // Validate the status
-        if (newStatus != Status.PENDING && newStatus != Status.COMPLETED && newStatus != Status.UNCOMPLETED) {
-            throw new IllegalArgumentException("Invalid status. Must be PENDING, COMPLETED, or UNCOMPLETED");
+        if (newStatus != Status.PENDING && newStatus != Status.COMPLETED && newStatus != Status.CONFIRMED) {
+            throw new IllegalArgumentException("Invalid status. Must be PENDING, COMPLETED, or CONFIRMED");
+        }
+
+        // If child marks chore as completed, update their balance
+        if (user.getRole() == Role.CHILD && newStatus == Status.COMPLETED) {
+            ChildEntity child = childRepository.findByUser(user)
+                    .orElseThrow(() -> new EntityNotFoundException("Child not found"));
+            child.setBalance(child.getBalance() + chore.getRewardsAmount());
+            childRepository.save(child);
         }
 
         // Update the chore's status
