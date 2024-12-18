@@ -1,15 +1,13 @@
 package RNcornerStoneBackend.RNcornerStoneBackend.quizAttempt.controller;
 
 import RNcornerStoneBackend.RNcornerStoneBackend.quizAttempt.bo.CreateAttemptEntity;
+import RNcornerStoneBackend.RNcornerStoneBackend.quizAttempt.entity.AttemptEntity;
 import RNcornerStoneBackend.RNcornerStoneBackend.quizAttempt.service.AttemptService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -42,7 +40,7 @@ public class AttemptController {
 
         String requestStatus = attemptService.addAttempt(request);
 
-        if (requestStatus==null) {
+        if (requestStatus == null) {
             return ResponseEntity.status(HttpStatus.CREATED).body(Map.of(
                     "status", "success",
                     "message", "The Attempt has been added to database."
@@ -52,6 +50,18 @@ public class AttemptController {
                     "status", "error",
                     "message", requestStatus
             ));
+        }
+    }
+
+    @GetMapping("/getall")
+    public ResponseEntity<List<AttemptEntity>> getAllAttempts() {
+
+        List<AttemptEntity> list = attemptService.getAllAttemptByID();
+
+        if (list != null) {
+            return ResponseEntity.status(HttpStatus.CREATED).body(list);
+        } else {// otherwise, the required missing field is highlighted to client
+            return ResponseEntity.badRequest().body(null);
         }
     }
 }
