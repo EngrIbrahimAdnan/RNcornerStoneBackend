@@ -11,6 +11,5 @@ import RNcornerStoneBackend.RNcornerStoneBackend.user.entity.UserEntity;
 @Repository
 public interface ChildRepository extends JpaRepository<ChildEntity, Long> {
     Optional<ChildEntity> findById(Long id);
-
     Optional<ChildEntity> findByUser(UserEntity user);
 }

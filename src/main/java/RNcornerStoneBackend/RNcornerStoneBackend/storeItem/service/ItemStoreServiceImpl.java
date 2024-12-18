@@ -125,9 +125,18 @@ public class ItemStoreServiceImpl implements ItemStoreService {
             return "This item has already been purchased";
         }
 
+        ChildEntity childEntity= childService.getChildEntityByUser(user);
+
+        if (childEntity.getBalance()-storeItem.getPrice()<0){
+            return "Not enough balance available to buy";
+        }
+
+        childService.updateBalnce(childEntity, childEntity.getBalance() - storeItem.getPrice());
+
         // Update purchase date
         storeItem.setPurchasedAt(new Date());
         storeItemRepository.save(storeItem);
+
         return null;
     }
 

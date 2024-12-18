@@ -151,4 +151,13 @@ public class ChildService {
         response.setParentId(child.getParent().getId());
         return response;
     }
+
+    public ChildEntity getChildEntityByUser(UserEntity childUser) {
+        return childRepository.findByUser(childUser).get();
+    }
+
+    public void updateBalnce(ChildEntity childEntity, Double currentBalance){
+        childEntity.setBalance(currentBalance);
+    }
+
 }
