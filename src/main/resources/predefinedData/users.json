@@ -22,17 +22,5 @@
     "password": "password",
     "email":"mishal@email.com",
     "role":"PARENT"
-  },
-  {
-    "username": "child1",
-    "password": "password",
-    "email":"child1@email.com",
-    "role":"CHILD"
-  },
-  {
-    "username": "child2",
-    "password": "password",
-    "email":"child2@email.com",
-    "role":"CHILD"
   }
 ]
