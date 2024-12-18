@@ -10,6 +10,7 @@ public class ChoreRequest {
     private String description;
     private Double rewardAmount;
     private Status status;
+    private String icon;
 
     public ChoreRequest(
     ) {
@@ -20,6 +21,15 @@ public class ChoreRequest {
         this.description = description;
         this.rewardAmount = rewardAmount;
         this.status = status;
+        this.icon = icon;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
     }
 
     public Long getId() {

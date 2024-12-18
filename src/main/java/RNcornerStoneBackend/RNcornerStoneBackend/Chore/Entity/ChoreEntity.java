@@ -34,6 +34,9 @@ public class ChoreEntity {
     @Column(nullable = false)
     private String description;
 
+    @Column(nullable = true)
+    private String icon;
+
     public ChoreEntity() {
         this.id = id;
         this.parent = parent;
@@ -42,6 +45,15 @@ public class ChoreEntity {
         this.child = child;
         this.title = title;
         this.description = description;
+        this.icon = icon;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
     }
 
     public Long getId() {

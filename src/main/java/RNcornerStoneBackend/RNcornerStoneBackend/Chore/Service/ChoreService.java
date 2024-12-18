@@ -115,6 +115,7 @@ public class ChoreService {
         savedChoreResponse.setDescription(savedChore.getDescription());
         savedChoreResponse.setRewardAmount(savedChore.getRewardsAmount());
         savedChoreResponse.setStatus(savedChore.getStatus());
+        savedChoreResponse.setIcon(savedChore.getIcon());
 
         return savedChoreResponse;
     }
@@ -184,6 +185,7 @@ public class ChoreService {
         updatedChoreResponse.setDescription(updatedChore.getDescription());
         updatedChoreResponse.setRewardAmount(updatedChore.getRewardsAmount());
         updatedChoreResponse.setStatus(updatedChore.getStatus());
+        updatedChoreResponse.setIcon(updatedChore.getIcon());
 
         return updatedChoreResponse;
     }
