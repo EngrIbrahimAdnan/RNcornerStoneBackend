@@ -15,4 +15,6 @@ public interface ItemStoreService {
     String buyStoreItem(BuyStoreItemEntity request);
 
     List<StoreItemResponse> getCurrentChildStoreItems();
+
+    List<StoreItemResponse> getStoreItemsForParentChild(Long childId);
 }

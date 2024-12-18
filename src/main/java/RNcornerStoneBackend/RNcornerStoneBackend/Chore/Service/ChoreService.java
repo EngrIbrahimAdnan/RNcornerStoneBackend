@@ -55,6 +55,33 @@ public class ChoreService {
     // return savedChoreResponse;
     // }
 
+    public List<ChoreResponse> getChoresForParentChild(Long childId) {
+        // Get the current authenticated user
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserEntity parent = (UserEntity) authentication.getPrincipal();
+
+        // Ensure the user is a parent
+        if (parent.getRole() != Role.PARENT) {
+            throw new RuntimeException("Only parents can access their children's chores");
+        }
+
+        // Find the child and verify it belongs to the parent
+        ChildEntity child = childRepository.findById(childId)
+                .orElseThrow(() -> new EntityNotFoundException("Child not found"));
+
+        if (!child.getParent().getId().equals(parent.getId())) {
+            throw new RuntimeException("You can only access chores for your own children");
+        }
+
+        // Get all chores for the child
+        List<ChoreEntity> chores = choreRepository.findByChildId(childId);
+
+        // Convert to response objects
+        return chores.stream()
+                .map(this::convertToChoreResponse)
+                .collect(Collectors.toList());
+    }
+
     public ChoreResponse createChore(Long childId, ChoreResponse choreDTO) {
         // Get the current authenticated user from the SecurityContext
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
