@@ -50,6 +50,34 @@ public class ItemStoreServiceImpl implements ItemStoreService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public List<StoreItemResponse> getStoreItemsForParentChild(Long childId) {
+        // Get the current authenticated user
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserEntity parent = (UserEntity) authentication.getPrincipal();
+
+        // Ensure the user is a parent
+        if (parent.getRole() != Role.PARENT) {
+            throw new RuntimeException("Only parents can access their children's store items");
+        }
+
+        // Find the child and verify it belongs to the parent
+        ChildEntity child = childService.getChildEntityById(childId)
+                .orElseThrow(() -> new EntityNotFoundException("Child not found"));
+
+        if (!child.getParent().getId().equals(parent.getId())) {
+            throw new RuntimeException("You can only access store items for your own children");
+        }
+
+        // Get all store items for the child
+        List<StoreItemEntity> storeItems = storeItemRepository.findAllByChildUserEntity(child.getUser());
+
+        // Convert to response objects
+        return storeItems.stream()
+                .map(this::convertToStoreItemResponse)
+                .collect(Collectors.toList());
+    }
+
     // for parent
     public String addStoreItem(CreateStoreItemEntity request) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
