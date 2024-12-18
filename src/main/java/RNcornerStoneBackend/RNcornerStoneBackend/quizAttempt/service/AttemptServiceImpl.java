@@ -4,15 +4,21 @@ import RNcornerStoneBackend.RNcornerStoneBackend.Auth.services.AuthenticationSer
 import RNcornerStoneBackend.RNcornerStoneBackend.quizAttempt.bo.CreateAttemptEntity;
 import RNcornerStoneBackend.RNcornerStoneBackend.quizAttempt.entity.AttemptEntity;
 import RNcornerStoneBackend.RNcornerStoneBackend.quizAttempt.repository.AttemptRepository;
+import RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.entity.QuizQuestionEntity;
 import RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.service.QuizQuestionService;
 import RNcornerStoneBackend.RNcornerStoneBackend.user.bo.LoginUserRequest;
+import RNcornerStoneBackend.RNcornerStoneBackend.user.entity.Role;
 import RNcornerStoneBackend.RNcornerStoneBackend.user.entity.UserEntity;
 import RNcornerStoneBackend.RNcornerStoneBackend.user.service.UserService;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import java.util.Iterator;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.List;
 import java.util.Optional;
+import java.util.Date;
 
 @Service
 public class AttemptServiceImpl implements AttemptService {
@@ -35,57 +41,40 @@ public class AttemptServiceImpl implements AttemptService {
     @Override
     public String addAttempt(CreateAttemptEntity request) {
 
-        if (!doesUserExistInDatabase(request, "user")) {
-            return "User in the request does not match any User in the database";
+        // Get the current authenticated user
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserEntity user = (UserEntity) authentication.getPrincipal();
+
+        if (user.getRole() == Role.CHILD) {
+            AttemptEntity attemptEntity = new AttemptEntity();
+
+            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+            Date date = new Date();
+
+            Optional<QuizQuestionEntity> quizQuestionEntity = quizQuestionService.getQuestionById(request.getQuestion_id());
+
+            if (quizQuestionEntity.isEmpty()) {
+                return "Question not found. Please provide an existing Question ID";
+            }
+
+            attemptEntity.setChildUserEntity(user);
+            attemptEntity.setQuizQuestionEntity(quizQuestionEntity.get());
+            attemptEntity.setAnswer(request.getAnswer());
+            attemptEntity.setDate(date);
+            attemptRepository.save(attemptEntity);
+            return null;
+        } else {
+            return "Only child User can add attempt, Not Parent.";
         }
-
-        if (!doesUserExistInDatabase(request, "question")) {
-            return "Question in the request does not match any Question in the database";
-        }
-
-        AttemptEntity attemptEntity = new AttemptEntity();
-        attemptEntity.setChildUserEntity(request.getChildUserEntity());
-        attemptEntity.setQuizQuestionEntity(request.getQuizQuestionEntity());
-        attemptEntity.setAnswer(request.getAnswer());
-        attemptEntity.setDate(request.getDate());
-
-        attemptRepository.save(attemptEntity);
-        return null;
     }
 
-
-    public Boolean doesUserExistInDatabase(CreateAttemptEntity request, String type) {
-        Optional<?> entity; // Declare the variable before the if/else block
-
-
-        if (type.equals("user")) {
-            LoginUserRequest loginRequest = new LoginUserRequest();
-            loginRequest.setUsername(request.getChildUserEntity().getUsername());
-            loginRequest.setPassword(request.getChildUserEntity().getPassword());
-
-            try {
-                UserEntity authenticated = authenticationService.authenticate(loginRequest);
-                if (!authenticated.getRole().equals(request.getChildUserEntity().getRole()) ||
-                        !authenticated.getId().equals(request.getChildUserEntity().getId()) ||
-                        !authenticated.getEmail().equals(request.getChildUserEntity().getEmail())) {
-                    return false;
-                }
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-
-        } else if (type.equals("question")) {
-            entity = quizQuestionService.getQuestionById(request.getQuizQuestionEntity().getId());
-
-            // Check if the entity exists in the database
-            if (entity.isEmpty() || !entity.get().equals(request.getQuizQuestionEntity())) {
-                return false;
-            }
-
+    public List<AttemptEntity> getAllAttemptByID() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserEntity user = (UserEntity) authentication.getPrincipal();
+        if (user.getRole() == Role.CHILD) {
+            return attemptRepository.findAllByChildUserEntity(user);
         } else {
-            return false; // Invalid type
+            return null;
         }
-
-        return true;
     }
 }
