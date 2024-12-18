@@ -1,10 +1,12 @@
 package RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.service;
 
 import RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.bo.CreateQuizQuestionEntity;
+import RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.bo.RequestQuestionById;
 import RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.entity.QuizQuestionEntity;
 import RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.repository.QuizQuestionsRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -16,8 +18,13 @@ public class QuizQuestionServiceImpl implements QuizQuestionService {
     }
 
     @Override
-    public Optional<QuizQuestionEntity> getQuestionById(Long id){
-        return quizQuestionsRepository.findById(id);
+    public Optional<QuizQuestionEntity> getQuestionById(Long questionId){
+        return quizQuestionsRepository.findById(questionId);
+    }
+
+    @Override
+    public List<QuizQuestionEntity> getAll(){
+        return quizQuestionsRepository.findAll();
     }
 
     @Override
