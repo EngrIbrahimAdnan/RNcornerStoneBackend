@@ -3,6 +3,7 @@ package RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.controller;
 
 import RNcornerStoneBackend.RNcornerStoneBackend.quizAttempt.bo.CreateAttemptEntity;
 import RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.bo.CreateQuizQuestionEntity;
+import RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.entity.QuizQuestionEntity;
 import RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.service.QuizQuestionService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -45,7 +46,7 @@ public class QuizQuestionController {
 
         String requestStatus = quizQuestionService.addQuestion(request);
 
-        if (requestStatus==null) {
+        if (requestStatus == null) {
             return ResponseEntity.status(HttpStatus.CREATED).body(Map.of(
                     "status", "success",
                     "message", "The Quiz Question has been added to database."
@@ -57,5 +58,6 @@ public class QuizQuestionController {
             ));
         }
     }
+
 
 }
