@@ -104,6 +104,7 @@ public class ChoreService {
         chore.setDescription(choreDTO.getDescription());
         chore.setRewardsAmount(choreDTO.getRewardAmount());
         chore.setStatus(Status.PENDING);
+        chore.setIcon(choreDTO.getIcon());
 
         // Save the chore and map the response
         ChoreEntity savedChore = choreRepository.save(chore);
@@ -237,6 +238,7 @@ public class ChoreService {
         response.setDescription(chore.getDescription());
         response.setRewardAmount(chore.getRewardsAmount());
         response.setStatus(chore.getStatus());
+        response.setIcon(chore.getIcon());
         return response;
     }
 
