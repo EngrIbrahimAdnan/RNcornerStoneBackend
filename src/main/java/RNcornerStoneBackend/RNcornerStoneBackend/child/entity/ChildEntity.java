@@ -1,12 +1,19 @@
 package RNcornerStoneBackend.RNcornerStoneBackend.child.entity;
 
-import RNcornerStoneBackend.RNcornerStoneBackend.Chore.Entity.ChoreEntity;
-import RNcornerStoneBackend.RNcornerStoneBackend.user.entity.UserEntity;
-import jakarta.persistence.*;
-
 import java.util.Date;
 import java.util.List;
 
+import RNcornerStoneBackend.RNcornerStoneBackend.Chore.Entity.ChoreEntity;
+import RNcornerStoneBackend.RNcornerStoneBackend.user.entity.UserEntity;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class ChildEntity {
@@ -25,11 +32,10 @@ public class ChildEntity {
     @OneToMany(mappedBy = "child")
     private List<ChoreEntity> chores;
 
-
     @Column(nullable = false)
     private String username;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String email;
 
     @Column(nullable = true)
@@ -45,7 +51,6 @@ public class ChildEntity {
         this.Balance = Balance;
         this.DateOfBirth = DateOfBirth;
     }
-
 
     public String getUsername() {
         return username;

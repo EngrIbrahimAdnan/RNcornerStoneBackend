@@ -85,16 +85,16 @@ public class ChildService {
         }
 
         // Validate the request fields
-        if (request.getUsername() == null || request.getEmail() == null || request.getPassword() == null) {
+        if (request.getUsername() == null || request.getPassword() == null) {
             throw new IllegalArgumentException("Username, email, and password cannot be null");
         }
 
         // Create the child user entity
         UserEntity childUser = new UserEntity();
         childUser.setUsername(request.getUsername());
-        childUser.setEmail(request.getEmail());
         childUser.setRole(Role.CHILD);
         childUser.setPassword(passwordEncoder.encode(request.getPassword()));
+        childUser.setAvatarUrl(request.getAvatarUrl());
 
         // Save the child user entity
         UserEntity savedChildUser = userRepository.save(childUser);
@@ -105,7 +105,6 @@ public class ChildService {
         child.setParent(parent); // Use the authenticated parent
         child.setBalance(request.getInitialBalance());
         child.setDateOfBirth(request.getDateOfBirth());
-        child.setEmail(request.getEmail());
         child.setUsername(request.getUsername());
 
         // Save the child entity
@@ -119,6 +118,7 @@ public class ChildService {
         response.setParentId(savedChild.getParent().getId());
         response.setUsername(savedChildUser.getUsername());
         response.setEmail(savedChildUser.getEmail());
+        response.setAvatarUrl(savedChildUser.getAvatarUrl());
 
         return response;
     }
@@ -149,6 +149,7 @@ public class ChildService {
         response.setBalance(child.getBalance());
         response.setDateOfBirth(child.getDateOfBirth());
         response.setParentId(child.getParent().getId());
+        response.setAvatarUrl(child.getUser().getAvatarUrl());
         return response;
     }
 }

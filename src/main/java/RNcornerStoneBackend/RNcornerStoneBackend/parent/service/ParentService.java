@@ -68,6 +68,7 @@ public class ParentService {
     response.setBalance(child.getBalance());
     response.setDateOfBirth(child.getDateOfBirth());
     response.setParentId(child.getParent().getId());
+    response.setAvatarUrl(child.getUser().getAvatarUrl());
     return response;
   }
 }

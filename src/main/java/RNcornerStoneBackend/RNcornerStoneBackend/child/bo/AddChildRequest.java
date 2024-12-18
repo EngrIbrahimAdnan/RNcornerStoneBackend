@@ -8,13 +8,16 @@ public class AddChildRequest {
     private String password;
     private Double initialBalance;
     private Date dateOfBirth;
+    private String avatarUrl;
 
-    public AddChildRequest(String username, String email, String password, Double initialBalance, Date dateOfBirth) {
+    public AddChildRequest(String username, String email, String password, Double initialBalance, Date dateOfBirth,
+            String avatarUrl) {
         this.username = username;
         this.email = email;
         this.password = password;
         this.initialBalance = initialBalance;
         this.dateOfBirth = dateOfBirth;
+        this.avatarUrl = avatarUrl;
     }
 
     public String getUsername() {
@@ -55,5 +58,13 @@ public class AddChildRequest {
 
     public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+    }
+
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
     }
 }

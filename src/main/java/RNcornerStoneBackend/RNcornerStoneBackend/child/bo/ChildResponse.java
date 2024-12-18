@@ -9,6 +9,7 @@ public class ChildResponse {
     private Double balance;
     private Date dateOfBirth;
     private Long parentId;
+    private String avatarUrl;
 
     public Long getId() {
         return id;
@@ -56,5 +57,13 @@ public class ChildResponse {
 
     public void setParentId(Long parentId) {
         this.parentId = parentId;
+    }
+
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
     }
 }
