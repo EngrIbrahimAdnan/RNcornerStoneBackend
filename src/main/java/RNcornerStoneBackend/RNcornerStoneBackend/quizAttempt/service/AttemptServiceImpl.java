@@ -2,6 +2,7 @@ package RNcornerStoneBackend.RNcornerStoneBackend.quizAttempt.service;
 
 import RNcornerStoneBackend.RNcornerStoneBackend.Auth.services.AuthenticationService;
 import RNcornerStoneBackend.RNcornerStoneBackend.quizAttempt.bo.CreateAttemptEntity;
+import RNcornerStoneBackend.RNcornerStoneBackend.quizAttempt.bo.RequestAttemptByID;
 import RNcornerStoneBackend.RNcornerStoneBackend.quizAttempt.entity.AttemptEntity;
 import RNcornerStoneBackend.RNcornerStoneBackend.quizAttempt.repository.AttemptRepository;
 import RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.entity.QuizQuestionEntity;
@@ -77,4 +78,9 @@ public class AttemptServiceImpl implements AttemptService {
             return null;
         }
     }
+
+    public AttemptEntity getAttemptById(RequestAttemptByID request) {
+        return attemptRepository.findById(request.getQuestion_id()).get();
+    }
+
 }

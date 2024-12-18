@@ -1,6 +1,7 @@
 package RNcornerStoneBackend.RNcornerStoneBackend.quizAttempt.controller;
 
 import RNcornerStoneBackend.RNcornerStoneBackend.quizAttempt.bo.CreateAttemptEntity;
+import RNcornerStoneBackend.RNcornerStoneBackend.quizAttempt.bo.RequestAttemptByID;
 import RNcornerStoneBackend.RNcornerStoneBackend.quizAttempt.entity.AttemptEntity;
 import RNcornerStoneBackend.RNcornerStoneBackend.quizAttempt.service.AttemptService;
 import jakarta.validation.Valid;
@@ -63,5 +64,27 @@ public class AttemptController {
         } else {// otherwise, the required missing field is highlighted to client
             return ResponseEntity.badRequest().body(null);
         }
+    }
+
+    @GetMapping("/get")
+    public ResponseEntity<AttemptEntity> getAllAttempts(@Valid @RequestBody RequestAttemptByID request, BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors()) {
+            List<String> errorMessages = bindingResult.getFieldErrors().stream()
+                    .map(fieldError -> fieldError.getField() + ": " + fieldError.getDefaultMessage())
+                    .collect(Collectors.toList());
+
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        }
+
+
+        AttemptEntity attempt = attemptService.getAttemptById(request);
+
+        if (attempt != null) {
+            return ResponseEntity.status(HttpStatus.CREATED).body(attempt);
+        } else {// otherwise, the required missing field is highlighted to client
+            return ResponseEntity.badRequest().body(null);
+        }
+
     }
 }
