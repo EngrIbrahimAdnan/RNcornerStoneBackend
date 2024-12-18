@@ -4,10 +4,11 @@ import RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.entity.QuizQuestio
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
 public interface QuizQuestionsRepository  extends JpaRepository<QuizQuestionEntity, Long>{
     Optional<QuizQuestionEntity> findById(Long id);
-
+    List<QuizQuestionEntity> findAll();
 }

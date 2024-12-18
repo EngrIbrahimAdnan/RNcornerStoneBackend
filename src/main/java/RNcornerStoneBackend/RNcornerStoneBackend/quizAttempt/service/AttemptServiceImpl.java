@@ -2,12 +2,11 @@ package RNcornerStoneBackend.RNcornerStoneBackend.quizAttempt.service;
 
 import RNcornerStoneBackend.RNcornerStoneBackend.Auth.services.AuthenticationService;
 import RNcornerStoneBackend.RNcornerStoneBackend.quizAttempt.bo.CreateAttemptEntity;
-import RNcornerStoneBackend.RNcornerStoneBackend.quizAttempt.bo.RequestAttemptByID;
+import RNcornerStoneBackend.RNcornerStoneBackend.quizAttempt.bo.RequestAttemptsByQuestionID;
 import RNcornerStoneBackend.RNcornerStoneBackend.quizAttempt.entity.AttemptEntity;
 import RNcornerStoneBackend.RNcornerStoneBackend.quizAttempt.repository.AttemptRepository;
 import RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.entity.QuizQuestionEntity;
 import RNcornerStoneBackend.RNcornerStoneBackend.quizQuestion.service.QuizQuestionService;
-import RNcornerStoneBackend.RNcornerStoneBackend.user.bo.LoginUserRequest;
 import RNcornerStoneBackend.RNcornerStoneBackend.user.entity.Role;
 import RNcornerStoneBackend.RNcornerStoneBackend.user.entity.UserEntity;
 import RNcornerStoneBackend.RNcornerStoneBackend.user.service.UserService;
@@ -69,18 +68,22 @@ public class AttemptServiceImpl implements AttemptService {
         }
     }
 
-    public List<AttemptEntity> getAllAttemptByID() {
+    public List<AttemptEntity> getAllAttemptByQuestionID(Long questionID) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         UserEntity user = (UserEntity) authentication.getPrincipal();
+
         if (user.getRole() == Role.CHILD) {
-            return attemptRepository.findAllByChildUserEntity(user);
+            QuizQuestionEntity questionEntity = quizQuestionService.getQuestionById(questionID).get();
+            return attemptRepository.findAllByChildUserEntityAndQuizQuestionEntity(user, questionEntity);
         } else {
             return null;
         }
     }
 
-    public AttemptEntity getAttemptById(RequestAttemptByID request) {
-        return attemptRepository.findById(request.getQuestion_id()).get();
+    public List<AttemptEntity> getAttempts() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserEntity user = (UserEntity) authentication.getPrincipal();
+        return attemptRepository.findAllByChildUserEntity(user);
     }
 
 }

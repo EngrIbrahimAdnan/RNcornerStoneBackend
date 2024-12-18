@@ -1,7 +1,7 @@
 package RNcornerStoneBackend.RNcornerStoneBackend.quizAttempt.controller;
 
 import RNcornerStoneBackend.RNcornerStoneBackend.quizAttempt.bo.CreateAttemptEntity;
-import RNcornerStoneBackend.RNcornerStoneBackend.quizAttempt.bo.RequestAttemptByID;
+import RNcornerStoneBackend.RNcornerStoneBackend.quizAttempt.bo.RequestAttemptsByQuestionID;
 import RNcornerStoneBackend.RNcornerStoneBackend.quizAttempt.entity.AttemptEntity;
 import RNcornerStoneBackend.RNcornerStoneBackend.quizAttempt.service.AttemptService;
 import jakarta.validation.Valid;
@@ -54,20 +54,9 @@ public class AttemptController {
         }
     }
 
-    @GetMapping("/getall")
-    public ResponseEntity<List<AttemptEntity>> getAllAttempts() {
-
-        List<AttemptEntity> list = attemptService.getAllAttemptByID();
-
-        if (list != null) {
-            return ResponseEntity.status(HttpStatus.CREATED).body(list);
-        } else {// otherwise, the required missing field is highlighted to client
-            return ResponseEntity.badRequest().body(null);
-        }
-    }
-
-    @GetMapping("/get")
-    public ResponseEntity<AttemptEntity> getAllAttempts(@Valid @RequestBody RequestAttemptByID request, BindingResult bindingResult) {
+    // Get all attempts for specified question id for current Child user
+    @GetMapping("/question/id")
+    public ResponseEntity<List<AttemptEntity>> getAllAttemptsForQuestionID(@Valid @RequestBody RequestAttemptsByQuestionID request, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
             List<String> errorMessages = bindingResult.getFieldErrors().stream()
@@ -77,8 +66,19 @@ public class AttemptController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
 
+        List<AttemptEntity> list = attemptService.getAllAttemptByQuestionID(request.getQuestion_id());
 
-        AttemptEntity attempt = attemptService.getAttemptById(request);
+        if (list != null) {
+            return ResponseEntity.status(HttpStatus.CREATED).body(list);
+        } else {// otherwise, the required missing field is highlighted to client
+            return ResponseEntity.badRequest().body(null);
+        }
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<AttemptEntity>> getAllAttempts() {
+
+        List<AttemptEntity> attempt = attemptService.getAttempts();
 
         if (attempt != null) {
             return ResponseEntity.status(HttpStatus.CREATED).body(attempt);
